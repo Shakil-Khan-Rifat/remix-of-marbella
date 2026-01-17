@@ -6,12 +6,15 @@ import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
+import HeroCarousel from "@/components/HeroCarousel";
 import heroImg from "@/assets/beach-clubs-hero.png";
 import naoImg from "@/assets/beach-club-nao.jpg";
 import oceanImg from "@/assets/beach-club-ocean.jpg";
 import mogliImg from "@/assets/beach-club-mogli.png";
 import nikkiImg from "@/assets/beach-club-nikki.png";
-import sublimImg from "@/assets/beach-club-sublim.png";
+import sublimImg from "@/assets/sublim-new.png";
+
+const heroImages = [heroImg, naoImg, oceanImg, mogliImg, nikkiImg, sublimImg];
 
 // Scroll to top on page load
 function ScrollToTop() {
@@ -22,8 +25,8 @@ function ScrollToTop() {
 }
 const beachClubs = [
   {
-    name: "NAO",
-    description: "Exclusive beachfront lounge with stunning Mediterranean views and premium service",
+    name: "Naô Pool Club",
+    description: "Ultimate destination for luxury poolside partying with premium service",
     image: naoImg,
     features: ["VIP Cabanas", "Gourmet Dining", "Premium Cocktails"],
     link: "/beach-clubs/nao",
@@ -124,19 +127,7 @@ export default function BeachClubs() {
       
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
-        <motion.div 
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="absolute inset-0"
-        >
-          <img
-            src={heroImg}
-            alt="Beach Clubs Marbella"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background" />
-        </motion.div>
+        <HeroCarousel images={heroImages} alt="Beach Clubs Marbella" />
 
         <div className="relative z-10 text-center px-6">
           <motion.span

@@ -7,6 +7,8 @@ import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
 import oliviaImg from "@/assets/nightclub-olivia.jpg";
 import oliviaFloorPlan from "@/assets/olivia-floor-plan.png";
+import oliviaInterior1 from "@/assets/olivia-interior-1.png";
+import oliviaInterior2 from "@/assets/olivia-interior-2.jpg";
 
 function ScrollToTop() {
   useEffect(() => {
@@ -17,8 +19,8 @@ function ScrollToTop() {
 
 const galleryImages = [
   { src: oliviaImg, alt: "Olivia Valere Main Hall" },
-  { src: oliviaImg, alt: "Olivia Valere VIP Lounge" },
-  { src: oliviaImg, alt: "Olivia Valere Party Night" },
+  { src: oliviaInterior1, alt: "Olivia Valere VIP Lounge" },
+  { src: oliviaInterior2, alt: "Olivia Valere Dance Floor" },
 ];
 
 const features = [

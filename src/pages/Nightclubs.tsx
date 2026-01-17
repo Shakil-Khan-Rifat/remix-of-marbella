@@ -6,12 +6,15 @@ import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
+import HeroCarousel from "@/components/HeroCarousel";
 import heroImg from "@/assets/service-nightclub.png";
 import fitzImg from "@/assets/nightclub-fitz.png";
 import oliviaImg from "@/assets/nightclub-olivia.jpg";
 import pangeaImg from "@/assets/nightclub-pangea.jpg";
 import mirageImg from "@/assets/nightclub-mirage.png";
 import tibuImg from "@/assets/nightclub-tibu.jpg";
+
+const heroImages = [heroImg, fitzImg, oliviaImg, pangeaImg, mirageImg, tibuImg];
 
 // Scroll to top on page load
 function ScrollToTop() {
@@ -129,19 +132,7 @@ export default function Nightclubs() {
       
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
-        <motion.div 
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="absolute inset-0"
-        >
-          <img
-            src={heroImg}
-            alt="Nightclubs Marbella"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background" />
-        </motion.div>
+        <HeroCarousel images={heroImages} alt="Nightclubs Marbella" />
 
         <div className="relative z-10 text-center px-6">
           <motion.span

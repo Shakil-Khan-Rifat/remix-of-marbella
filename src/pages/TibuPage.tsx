@@ -7,6 +7,9 @@ import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
 import tibuImg from "@/assets/nightclub-tibu.jpg";
 import tibuFloorPlan from "@/assets/tibu-floor-plan.png";
+import tibuDj from "@/assets/tibu-dj.jpg";
+import tibuCrowd from "@/assets/tibu-crowd.jpg";
+import tibuSparklers from "@/assets/tibu-sparklers.jpg";
 
 function ScrollToTop() {
   useEffect(() => {
@@ -17,8 +20,9 @@ function ScrollToTop() {
 
 const galleryImages = [
   { src: tibuImg, alt: "TIBU Terrace" },
-  { src: tibuImg, alt: "TIBU Entrance" },
-  { src: tibuImg, alt: "TIBU Dance Floor" },
+  { src: tibuDj, alt: "TIBU DJ Booth" },
+  { src: tibuCrowd, alt: "TIBU Crowd" },
+  { src: tibuSparklers, alt: "TIBU Party" },
 ];
 
 const features = [

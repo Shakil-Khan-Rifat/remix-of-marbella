@@ -6,6 +6,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
 import mogliImg from "@/assets/beach-club-mogli.png";
+import mogli1 from "@/assets/mogli-1.jpg";
+import mogli2 from "@/assets/mogli-2.jpg";
+import mogli3 from "@/assets/mogli-3.jpg";
 
 function ScrollToTop() {
   useEffect(() => {
@@ -15,17 +18,16 @@ function ScrollToTop() {
 }
 
 const galleryImages = [
-  { src: mogliImg, alt: "Mogli Pool" },
-  { src: mogliImg, alt: "Mogli Lounge" },
-  { src: mogliImg, alt: "Mogli Party" },
-  { src: mogliImg, alt: "Mogli DJ" },
+  { src: mogli1, alt: "Mogli Venue" },
+  { src: mogli2, alt: "Mogli DJ" },
+  { src: mogli3, alt: "Mogli Night Party" },
 ];
 
 const features = [
   { icon: "🎉", title: "Party Atmosphere", description: "Vibrant and electrifying pool club with non-stop energy" },
   { icon: "🎵", title: "Top DJs", description: "House, hip-hop and afro beats all day long" },
-  { icon: "🏝️", title: "Tropical Vibes", description: "Thatched roof ambiance with bohemian paradise feel" },
-  { icon: "🍹", title: "Signature Cocktails", description: "Expertly crafted cocktails and premium spirits" },
+  { icon: "🏝️", title: "Tropical Vibes", description: "Bohemian paradise feel" },
+  { icon: "🍹", title: "Signature Cocktails", description: "Legendary champagne sprays" },
 ];
 
 const amenities = [
@@ -34,8 +36,6 @@ const amenities = [
   "VIP Sofas",
   "Bottle Service",
   "Live DJ",
-  "Mediterranean Cuisine",
-  "Island Beds",
   "Sunset Views",
 ];
 
@@ -49,6 +49,9 @@ const priceList = [
   { area: "Be You", persons: 10, price: "€500" },
   { area: "The Palm", persons: 10, price: "€3000" },
 ];
+
+// Set to true to show price list on the website
+const SHOW_PRICE_LIST = false;
 
 export default function MogliPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -127,7 +130,7 @@ export default function MogliPage() {
                 A vibrant and electrifying pool club with a lively party atmosphere, hosting some of the hottest events in Marbella. Perfect for those looking to celebrate under the sun all day long.
               </p>
               <p className="text-foreground/60 leading-relaxed mb-8">
-                With a soundtrack of house, hip-hop and afro beats, Mogli delivers an unforgettable tropical experience with its iconic thatched roof design and bohemian vibes.
+                With a soundtrack of house, hip-hop and afro beats, Mogli delivers an unforgettable tropical experience with its iconic design and bohemian vibes.
               </p>
 
               <div className="grid grid-cols-2 gap-4">
@@ -137,11 +140,11 @@ export default function MogliPage() {
                 </div>
                 <div className="flex items-center gap-3 text-foreground/70">
                   <Clock className="w-5 h-5 text-primary" />
-                  <span className="text-sm">12:00 PM - Late</span>
+                  <span className="text-sm">12:00 PM - 8:00 PM</span>
                 </div>
                 <div className="flex items-center gap-3 text-foreground/70">
                   <Phone className="w-5 h-5 text-primary" />
-                  <span className="text-sm">+34 123 456 789</span>
+                  <span className="text-sm">+34 600 25 01 54</span>
                 </div>
                 <div className="flex items-center gap-3 text-foreground/70">
                   <Star className="w-5 h-5 text-primary" />
@@ -180,31 +183,33 @@ export default function MogliPage() {
         </div>
       </section>
 
-      {/* Price List */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-              <span className="text-gradient-lime">Price List</span>
-            </h2>
-          </motion.div>
+      {/* Price List - Hidden for now, set SHOW_PRICE_LIST to true to enable */}
+      {SHOW_PRICE_LIST && (
+        <section className="py-16 md:py-24">
+          <div className="container mx-auto px-6">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+              <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
+                <span className="text-gradient-lime">Price List</span>
+              </h2>
+            </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-3xl mx-auto bg-charcoal-light rounded-2xl border border-primary/10 overflow-hidden">
-            <div className="grid grid-cols-3 gap-4 p-4 bg-primary/10 text-foreground font-medium text-sm">
-              <span>Area</span>
-              <span className="text-center">Persons</span>
-              <span className="text-right">Price</span>
-            </div>
-            {priceList.map((item, index) => (
-              <div key={index} className="grid grid-cols-3 gap-4 p-4 border-t border-primary/10 text-foreground/80 text-sm hover:bg-primary/5 transition-colors">
-                <span className="font-medium">{item.area}</span>
-                <span className="text-center">{item.persons}</span>
-                <span className="text-right text-primary font-medium">{item.price}</span>
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-3xl mx-auto bg-charcoal-light rounded-2xl border border-primary/10 overflow-hidden">
+              <div className="grid grid-cols-3 gap-4 p-4 bg-primary/10 text-foreground font-medium text-sm">
+                <span>Area</span>
+                <span className="text-center">Persons</span>
+                <span className="text-right">Price</span>
               </div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+              {priceList.map((item, index) => (
+                <div key={index} className="grid grid-cols-3 gap-4 p-4 border-t border-primary/10 text-foreground/80 text-sm hover:bg-primary/5 transition-colors">
+                  <span className="font-medium">{item.area}</span>
+                  <span className="text-center">{item.persons}</span>
+                  <span className="text-right text-primary font-medium">{item.price}</span>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+      )}
 
       {/* Amenities Section */}
       <section className="py-16 bg-charcoal-light">
@@ -215,7 +220,7 @@ export default function MogliPage() {
             </h2>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="flex flex-wrap justify-center gap-4">
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="flex justify-center gap-4">
             {amenities.map((amenity, index) => (
               <motion.span key={amenity} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: index * 0.05 }} className="px-6 py-3 bg-background/50 text-foreground/80 rounded-full border border-primary/20 hover:border-primary/40 hover:text-primary transition-all duration-300">
                 {amenity}

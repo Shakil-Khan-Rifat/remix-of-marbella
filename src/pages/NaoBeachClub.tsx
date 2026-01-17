@@ -6,6 +6,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
 import naoImg1 from "@/assets/beach-club-nao.jpg";
+import naoPool1 from "@/assets/nao-pool-1.jpg";
+import naoSushi from "@/assets/nao-sushi.jpg";
+import naoPool2 from "@/assets/nao-pool-2.jpg";
 
 // Scroll to top on page load
 function ScrollToTop() {
@@ -16,14 +19,13 @@ function ScrollToTop() {
 }
 
 const galleryImages = [
-  { src: naoImg1, alt: "NAO Pool Area" },
-  { src: naoImg1, alt: "NAO Lounge" },
-  { src: naoImg1, alt: "NAO Beach View" },
-  { src: naoImg1, alt: "NAO VIP Section" },
+  { src: naoImg1, alt: "Naô Pool Club Pool Area" },
+  { src: naoPool2, alt: "Naô Pool Club Lounge" },
+  { src: naoSushi, alt: "Naô Pool Club Sushi" },
+  { src: naoPool1, alt: "Naô Pool Club Poolside" },
 ];
 
 const features = [
-  { icon: "🏖️", title: "Beachfront Location", description: "Prime Mediterranean beachfront with stunning sunset views" },
   { icon: "🍾", title: "Premium Service", description: "Dedicated VIP service with bottle packages and cabanas" },
   { icon: "🎵", title: "Live Entertainment", description: "World-class DJs and live performances throughout the season" },
   { icon: "🍽️", title: "Gourmet Dining", description: "Mediterranean fusion cuisine prepared by top chefs" },
@@ -32,12 +34,10 @@ const features = [
 const amenities = [
   "VIP Cabanas",
   "Infinity Pool",
-  "Gourmet Restaurant",
+  "Gourmet Dining",
   "Premium Cocktails",
   "Live DJ Sets",
-  "Private Events",
   "Bottle Service",
-  "Beach Access",
 ];
 
 export default function NaoBeachClub() {
@@ -120,7 +120,7 @@ export default function NaoBeachClub() {
             transition={{ duration: 0.8 }}
             className="font-display text-6xl md:text-8xl text-foreground"
           >
-            <span className="text-gradient-lime">NAO</span>
+            <span className="text-gradient-lime">Naô Pool Club</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -128,7 +128,7 @@ export default function NaoBeachClub() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-foreground/70 mt-4 text-lg tracking-wider"
           >
-            Pool Club • Marbella
+            Marbella
           </motion.p>
         </div>
       </section>
@@ -161,13 +161,13 @@ export default function NaoBeachClub() {
                 The Ultimate <span className="text-gradient-lime">Destination</span>
               </h2>
               <p className="text-foreground/60 text-lg leading-relaxed mb-6">
-                NAO Pool Club is the ultimate destination for luxury poolside partying, 
+                Naô Pool Club is the ultimate destination for luxury poolside partying, 
                 renowned as one of the hottest and trendiest spots in Marbella. Experience 
                 a vibrant fusion of exclusivity and celebration in this stunning venue.
               </p>
               <p className="text-foreground/60 leading-relaxed mb-8">
                 Boasting a stylish ambiance with chic decor, signature cocktails, and an 
-                eclectic lineup of international guest DJs, NAO captivates with its Ibiza-esque 
+                eclectic lineup of international guest DJs, Naô captivates with its Ibiza-esque 
                 flair for mixing music genres like Tech House and Commercial House.
               </p>
 
@@ -179,15 +179,15 @@ export default function NaoBeachClub() {
                 </div>
                 <div className="flex items-center gap-3 text-foreground/70">
                   <Clock className="w-5 h-5 text-primary" />
-                  <span className="text-sm">12:00 PM - 2:00 AM</span>
+                  <span className="text-sm">12:00 PM - 8:00 PM</span>
                 </div>
                 <div className="flex items-center gap-3 text-foreground/70">
                   <Phone className="w-5 h-5 text-primary" />
-                  <span className="text-sm">+34 123 456 789</span>
+                  <span className="text-sm">+34 600 25 01 54</span>
                 </div>
                 <div className="flex items-center gap-3 text-foreground/70">
                   <Star className="w-5 h-5 text-primary" />
-                  <span className="text-sm">Dress Code: Smart Casual</span>
+                  <span className="text-sm">Dress Code: Beach Wear</span>
                 </div>
               </div>
             </motion.div>
@@ -201,7 +201,7 @@ export default function NaoBeachClub() {
             >
               <img
                 src={naoImg1}
-                alt="NAO Beach Club"
+                alt="Naô Pool Club"
                 className="w-full h-[500px] object-cover rounded-2xl"
               />
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-background/40 to-transparent" />
@@ -222,11 +222,11 @@ export default function NaoBeachClub() {
             className="text-center mb-16"
           >
             <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-              What Makes NAO <span className="text-gradient-lime">Special</span>
+              What Makes Naô <span className="text-gradient-lime">Special</span>
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
@@ -263,7 +263,7 @@ export default function NaoBeachClub() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="flex flex-wrap justify-center gap-4"
+            className="flex justify-center gap-4"
           >
             {amenities.map((amenity, index) => (
               <motion.span
@@ -291,7 +291,7 @@ export default function NaoBeachClub() {
             className="text-center max-w-2xl mx-auto"
           >
             <h2 className="font-display text-3xl md:text-4xl text-foreground mb-6">
-              Ready to Experience <span className="text-gradient-lime">NAO</span>?
+              Ready to Experience <span className="text-gradient-lime">Naô</span>?
             </h2>
             <p className="text-foreground/60 mb-10">
               Contact our concierge team to secure your VIP reservation and experience 

@@ -6,6 +6,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
 import nikkiImg from "@/assets/beach-club-nikki.png";
+import nikki1 from "@/assets/nikki-1.png";
+import nikki2 from "@/assets/nikki-2.png";
+import nikki3 from "@/assets/nikki-3.png";
 
 function ScrollToTop() {
   useEffect(() => {
@@ -15,10 +18,9 @@ function ScrollToTop() {
 }
 
 const galleryImages = [
-  { src: nikkiImg, alt: "Nikki Beach Pool" },
-  { src: nikkiImg, alt: "Nikki Beach Lounge" },
-  { src: nikkiImg, alt: "Nikki Beach Party" },
-  { src: nikkiImg, alt: "Nikki Beach Sunset" },
+  { src: nikki1, alt: "Nikki Beach Tipi" },
+  { src: nikki2, alt: "Nikki Beach Dining" },
+  { src: nikki3, alt: "Nikki Beach Party" },
 ];
 
 const features = [
@@ -31,13 +33,14 @@ const features = [
 const amenities = [
   "Beach Access",
   "Pool Beds",
-  "Deck Beds",
   "Cabanas",
-  "Elevated Tables",
-  "Beach Beds",
   "VIP Service",
   "Fine Dining",
+  "DJ Sets",
 ];
+
+// Set to true to show price list on the website
+const SHOW_PRICE_LIST = false;
 
 export default function NikkiBeachPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -130,7 +133,7 @@ export default function NikkiBeachPage() {
                 </div>
                 <div className="flex items-center gap-3 text-foreground/70">
                   <Phone className="w-5 h-5 text-primary" />
-                  <span className="text-sm">+34 952 836 226</span>
+                  <span className="text-sm">+34 600 25 01 54</span>
                 </div>
                 <div className="flex items-center gap-3 text-foreground/70">
                   <Star className="w-5 h-5 text-primary" />
@@ -169,40 +172,42 @@ export default function NikkiBeachPage() {
         </div>
       </section>
 
-      {/* Season Info */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-              Summer 2025 <span className="text-gradient-lime">Bed Experience</span>
-            </h2>
-            <p className="text-foreground/60 max-w-2xl mx-auto">
-              Choose from our exclusive pool area and beach area lounging options. Prices vary by season and day of the week. Contact our concierge for current availability and rates.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="p-6 bg-charcoal-light rounded-2xl border border-primary/10">
-              <h3 className="font-display text-xl text-foreground mb-4 text-center">Pool Area</h3>
-              <ul className="space-y-3 text-foreground/70 text-sm">
-                <li className="flex justify-between"><span>Pool Bed (4-6 guests)</span><span className="text-primary">From €950</span></li>
-                <li className="flex justify-between"><span>Deck Bed (4-6 guests)</span><span className="text-primary">From €950</span></li>
-                <li className="flex justify-between"><span>Cabana (6-8 guests)</span><span className="text-primary">From €1650</span></li>
-                <li className="flex justify-between"><span>Elevated Table (6-8 guests)</span><span className="text-primary">From €1650</span></li>
-              </ul>
+      {/* Season Info - Hidden for now, set SHOW_PRICE_LIST to true to enable */}
+      {SHOW_PRICE_LIST && (
+        <section className="py-16 md:py-24">
+          <div className="container mx-auto px-6">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+              <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
+                Summer 2025 <span className="text-gradient-lime">Bed Experience</span>
+              </h2>
+              <p className="text-foreground/60 max-w-2xl mx-auto">
+                Choose from our exclusive pool area and beach area lounging options. Prices vary by season and day of the week. Contact our concierge for current availability and rates.
+              </p>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="p-6 bg-charcoal-light rounded-2xl border border-primary/10">
-              <h3 className="font-display text-xl text-foreground mb-4 text-center">Beach Area</h3>
-              <ul className="space-y-3 text-foreground/70 text-sm">
-                <li className="flex justify-between"><span>Beach Bed (4-6 guests)</span><span className="text-primary">From €650</span></li>
-                <li className="flex justify-between"><span>Single Sun Loungers (2 guests)</span><span className="text-primary">N/C</span></li>
-              </ul>
-              <p className="text-foreground/50 text-xs mt-4">* Prices include bottle service minimum. Weekend rates may apply.</p>
-            </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="p-6 bg-charcoal-light rounded-2xl border border-primary/10">
+                <h3 className="font-display text-xl text-foreground mb-4 text-center">Pool Area</h3>
+                <ul className="space-y-3 text-foreground/70 text-sm">
+                  <li className="flex justify-between"><span>Pool Bed (4-6 guests)</span><span className="text-primary">From €950</span></li>
+                  <li className="flex justify-between"><span>Deck Bed (4-6 guests)</span><span className="text-primary">From €950</span></li>
+                  <li className="flex justify-between"><span>Cabana (6-8 guests)</span><span className="text-primary">From €1650</span></li>
+                  <li className="flex justify-between"><span>Elevated Table (6-8 guests)</span><span className="text-primary">From €1650</span></li>
+                </ul>
+              </motion.div>
+
+              <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="p-6 bg-charcoal-light rounded-2xl border border-primary/10">
+                <h3 className="font-display text-xl text-foreground mb-4 text-center">Beach Area</h3>
+                <ul className="space-y-3 text-foreground/70 text-sm">
+                  <li className="flex justify-between"><span>Beach Bed (4-6 guests)</span><span className="text-primary">From €650</span></li>
+                  <li className="flex justify-between"><span>Single Sun Loungers (2 guests)</span><span className="text-primary">N/C</span></li>
+                </ul>
+                <p className="text-foreground/50 text-xs mt-4">* Prices include bottle service minimum. Weekend rates may apply.</p>
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Amenities Section */}
       <section className="py-16 bg-charcoal-light">
@@ -213,7 +218,7 @@ export default function NikkiBeachPage() {
             </h2>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="flex flex-wrap justify-center gap-4">
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="flex justify-center gap-4">
             {amenities.map((amenity, index) => (
               <motion.span key={amenity} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: index * 0.05 }} className="px-6 py-3 bg-background/50 text-foreground/80 rounded-full border border-primary/20 hover:border-primary/40 hover:text-primary transition-all duration-300">
                 {amenity}

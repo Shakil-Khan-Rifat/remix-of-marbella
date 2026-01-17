@@ -2,10 +2,11 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Home, Bed, Bath, Waves, MapPin, Users } from "lucide-react";
+import { ArrowLeft, Home, Bed, Bath, Waves, MapPin, Users, ExternalLink } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
+import HeroCarousel from "@/components/HeroCarousel";
 
 import villa1 from "@/assets/villa-1.jpg";
 import villa2 from "@/assets/villa-2.jpg";
@@ -15,38 +16,14 @@ import villa5 from "@/assets/villa-5.jpg";
 import villa6 from "@/assets/villa-6.jpg";
 import villa7 from "@/assets/villa-7.jpg";
 import villa8 from "@/assets/villa-8.jpg";
-import monteMayor1 from "@/assets/villa-monte-mayor-1.png";
-import monteMayor2 from "@/assets/villa-monte-mayor-2.png";
-import monteMayor3 from "@/assets/villa-monte-mayor-3.png";
-import monteMayor4 from "@/assets/villa-monte-mayor-4.png";
-import atalayaGolf1 from "@/assets/villa-atalaya-golf-1.png";
-import atalayaGolf2 from "@/assets/villa-atalaya-golf-2.png";
-import atalayaGolf3 from "@/assets/villa-atalaya-golf-3.png";
-import atalayaGolf4 from "@/assets/villa-atalaya-golf-4.png";
-import elParaiso1 from "@/assets/villa-el-paraiso-1.png";
-import elParaiso2 from "@/assets/villa-el-paraiso-2.png";
-import elParaiso3 from "@/assets/villa-el-paraiso-3.png";
-import elParaiso4 from "@/assets/villa-el-paraiso-4.png";
-import sierraBlanca1 from "@/assets/villa-sierra-blanca-1.png";
-import sierraBlanca2 from "@/assets/villa-sierra-blanca-2.png";
-import sierraBlanca3 from "@/assets/villa-sierra-blanca-3.png";
-import sierraBlanca4 from "@/assets/villa-sierra-blanca-4.png";
-import villaAtalaya1 from "@/assets/villa-atalaya-1.png";
-import villaAtalaya2 from "@/assets/villa-atalaya-2.png";
-import villaAtalaya3 from "@/assets/villa-atalaya-3.png";
-import villaAtalaya4 from "@/assets/villa-atalaya-4.png";
-import lasDos1 from "@/assets/villa-las-dos-torres-1.png";
-import lasDos2 from "@/assets/villa-las-dos-torres-2.png";
-import lasDos3 from "@/assets/villa-las-dos-torres-3.png";
-import lasDos4 from "@/assets/villa-las-dos-torres-4.png";
-import losFlamingos1 from "@/assets/villa-los-flamingos-1.png";
-import losFlamingos2 from "@/assets/villa-los-flamingos-2.png";
-import losFlamingos3 from "@/assets/villa-los-flamingos-3.png";
-import losFlamingos4 from "@/assets/villa-los-flamingos-4.png";
-import elToro1 from "@/assets/villa-el-toro-1.png";
-import elToro2 from "@/assets/villa-el-toro-2.png";
-import elToro3 from "@/assets/villa-el-toro-3.png";
-import elToro4 from "@/assets/villa-el-toro-4.png";
+
+const heroImages = [villa1, villa2, villa3, villa4, villa5, villa6, villa7, villa8];
+import villaImagine from "@/assets/villa-imagine-new.jpg";
+import villaNuevaAndalucia from "@/assets/villa-nueva-andalucia.png";
+import villaMarbellamar from "@/assets/villa-marbellamar.png";
+import villaCollectionGoldenMile from "@/assets/villa-collection-golden-mile.png";
+import villaCasaLux from "@/assets/villa-casa-lux.png";
+import villaLasDosTorres from "@/assets/villa-las-dos-torres.png";
 
 interface Villa {
   name: string;
@@ -55,78 +32,76 @@ interface Villa {
   baths: number;
   guests?: number;
   images: string[];
+  detailsPdf?: string;
 }
 
 const villas: Villa[] = [
   {
-    name: "Villa Monte Mayor",
-    description: "Nestled in the prestigious hills of Monte Mayor, Benahavis, Villa Imagine is a sanctuary of elegance, designed for those who seek the perfect blend of luxury, privacy, and breathtaking views. Just moments from Marbella and Estepona, this exceptional retreat offers an unparalleled escape for discerning travellers.",
-    beds: 5,
-    baths: 6,
-    guests: 11,
-    images: [monteMayor1, monteMayor2, monteMayor3, monteMayor4],
-  },
-  {
-    name: "Villa Atalaya Golf",
-    description: "Relax in this calm, stylish space. The villa has everything you need for a fabulous holiday. The outdoor area is the star of this villa and has a heated 9.5mx5m pool with an electric cover that's secure for children. This modern Villa, in the Marbella area, is a short drive to the beach and next to Atalaya Golf. Recently built, it enjoys four large terraces, including a roof terrace and a chillout area with a covered dining table with seating for 12 and a large sofa, many sun beds and garden.",
+    name: "Villa Imagine",
+    description: "Nestled in the prestigious hills of Monte Mayor, Benahavis, Villa Imagine represents the pinnacle of luxury living where elegance and sophistication meet unparalleled privacy and breathtaking sea and mountain views. This detached 6-bedroom, 5-bathroom villa features 472m² of built space, a private heated infinity pool, and a sprawling 3,100m² garden plot with panoramic views of the Mediterranean.",
     beds: 6,
-    baths: 8,
+    baths: 5,
     guests: 12,
-    images: [atalayaGolf1, atalayaGolf2, atalayaGolf3, atalayaGolf4],
+    images: [villaImagine],
+    detailsPdf: "/villas/villa-imagine.pdf",
   },
   {
-    name: "Villa El Paraiso",
-    description: "Modern frontline golf villa with luxury qualities and exceptional finishes. Located in a privileged location in El Campanario. The villa consists of ground floor, upper floor and living and bright basement with a large cinema room and an area with access to a patio. The villa consists mainly of 4 bedrooms and 5 bathrooms. 2 bedrooms with ensuite bathroom on the upper floor, 1 bedroom with bathroom on the ground floor and 1 bedroom with bathroom on the basement floor.",
+    name: "Nueva Andalucía",
+    description: "Step into refined luxury with this exquisite villa, perfectly situated in the prestigious and highly sought-after enclave of Nueva Andalucía—just moments from world-class amenities and the shimmering Mediterranean coastline. Set on a generous 500+ square meter plot with over 200 square meters of thoughtfully designed living space, this residence seamlessly blends elegance, comfort, and functionality. The open-plan living area features a recently renovated kitchen with premium appliances, expansive sliding doors opening onto a beautifully landscaped terrace with a heated private pool.",
     beds: 4,
-    baths: 6,
+    baths: 4,
     guests: 8,
-    images: [elParaiso1, elParaiso2, elParaiso3, elParaiso4],
+    images: [villaNuevaAndalucia],
+    detailsPdf: "/villas/nueva-andalucia.pdf",
   },
   {
-    name: "Villa Sierra Blanca",
-    description: "Villa Mozart, located in the prestigious Sierra Blanca, Marbella, is a modern masterpiece spanning four luxurious levels. This 6-bedroom, 9-bathroom villa offers breathtaking sea and mountain views from three floors and features a rooftop entertainment area with a full-size swimming pool and exquisite interiors designed for ultimate comfort.",
-    beds: 6,
-    baths: 9,
-    guests: 12,
-    images: [sierraBlanca1, sierraBlanca2, sierraBlanca3, sierraBlanca4],
-  },
-  {
-    name: "Villa Atalaya",
-    description: "Villa Mozart, located in the prestigious Sierra Blanca, Marbella, is a modern masterpiece spanning four luxurious levels. This 6-bedroom, 9-bathroom villa offers breathtaking sea and mountain views from three floors and features a rooftop entertainment area with a full-size swimming pool and exquisite interiors designed for ultimate comfort.",
+    name: "Marbellamar Marbella Golden Mile",
+    description: "Casa Del Sol is a stunning, newly reformed three-storey townhouse in Marbellamar, on the best beach in Marbella. Just 100 meters from sandy Casablanca beach, surrounded by celebrity hangouts. Walk to the old town of Marbella, the famous Marbella Club, and top quality bars and restaurants. This luxurious property sleeps up to ten guests and provides modern bathrooms, power showers, cotton sheets, maid service, and over 100 international TV channels.",
     beds: 5,
     baths: 4,
     guests: 10,
-    images: [villaAtalaya1, villaAtalaya2, villaAtalaya3, villaAtalaya4],
+    images: [villaMarbellamar],
+    detailsPdf: "/villas/marbellamar.pdf",
   },
   {
-    name: "Villa Las Dos Torres",
-    description: "Las Dos Torres is a luxurious Andalusian-style villa featuring four spacious bedrooms, each with its own en-suite bathroom. Set in the exclusive gated community of Monte Mayor in Benahavís, this elegant property offers breathtaking views of the Mediterranean Sea and surrounding mountains. The villa is designed with an open-plan layout, filled with natural light from its double-height ceilings and expansive windows.",
+    name: "The Collection Marbella Golden Mile",
+    description: "Located just 200 meters from the iconic Puente Romano Beach Resort & Spa, this stunning semi-detached villa offers an unparalleled five-star luxury experience on Marbella's Golden Mile. This four-level villa features a private 4x8m pool with tranquil waterfalls, an outdoor grill for alfresco dining, and a state-of-the-art outdoor cinema with a 200-inch projector. The 50 sqm rooftop terrace is the crown jewel, featuring a private jacuzzi with panoramic sea and mountain views.",
+    beds: 4,
+    baths: 4,
+    guests: 8,
+    images: [villaCollectionGoldenMile],
+    detailsPdf: "/villas/collection-golden-mile.pdf",
+  },
+  {
+    name: "Casa Lux Villa",
+    description: "Elegant Marbella Villa located in the sought-after Linda Vista, San Pedro Beach side area. This luxury villa offers refined living just moments from the beach with bright, spacious interiors, a fully equipped kitchen, manicured garden, heated pool, and generous terraces. South-East orientation with parking, air conditioning, and central heating included.",
+    beds: 5,
+    baths: 5,
+    guests: 10,
+    images: [villaCasaLux],
+    detailsPdf: "/villas/casa-lux.pdf",
+  },
+  {
+    name: "Las Dos Torres",
+    description: "Discover the ultimate in luxury and privacy at Las Dos Torres, a stunning contemporary Andalusian-style villa nestled in the exclusive gated community of Monte Mayor in Benahavís. This exquisite property offers 24-hour security, breathtaking sea and mountain views, and unparalleled serenity just 15 minutes from the vibrant Costa del Sol.",
     beds: 4,
     baths: 5,
     guests: 8,
-    images: [lasDos1, lasDos2, lasDos3, lasDos4],
-  },
-  {
-    name: "Villa Los Flamingos",
-    description: "Enjoy ultimate luxury at our golf villa in Los Flamingos, Costa del Sol. This peaceful, gated community offers stunning views of the coast, Andalusian hills, and the Mediterranean Sea. The gated community is secure, with amazing golf views, a fantastic pool, and a barbecue area. Residents can access three 18-hole golf courses, the Michael Campbell Golf Academy, and the luxurious Anantara Villa Padierna Palace Resort with its spa, restaurants, and private beach club. Just 3 km from the beach and close to Puerto Banús, Marbella, and Estepona, this villa perfectly blends tranquility and convenience.",
-    beds: 4,
-    baths: 5,
-    guests: 8,
-    images: [losFlamingos1, losFlamingos2, losFlamingos3, losFlamingos4],
-  },
-  {
-    name: "Villa El Toro",
-    description: "A Vibrant villa in the epicenter of Nueva Andalucía. El Toro has a modern design and a spacious layout, located a stone's throw from the bullring and Centro Plaza. Close to numerous restaurants, shops with walking distance to Puerto Banus and the beach makes this the perfect location for those you enjoy Marbella's social life and want to be in the mix. Waking up to unbeatable views of La Concha, having a coffee with views to the sea, and enjoying the privacy of your garden while listening to the intoxicating sound of the waterfall from the refreshing pool is what this villa offers.",
-    beds: 6,
-    baths: 6,
-    guests: 12,
-    images: [elToro1, elToro2, elToro3, elToro4],
+    images: [villaLasDosTorres],
+    detailsPdf: "/villas/las-dos-torres.pdf",
   },
 ];
 
 function VillaCard({ villa, index }: { villa: Villa; index: number }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isSingleImage = villa.images.length === 1;
+
+  const handleSeeMore = () => {
+    if (villa.detailsPdf) {
+      window.open(villa.detailsPdf, "_blank");
+    }
+  };
 
   return (
     <motion.div
@@ -134,23 +109,33 @@ function VillaCard({ villa, index }: { villa: Villa; index: number }) {
       initial={{ opacity: 0, y: 60 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="bg-charcoal-light rounded-2xl overflow-hidden border border-primary/10 hover:border-primary/30 transition-all duration-500"
+      className="bg-charcoal-light rounded-2xl overflow-hidden border border-primary/10 hover:border-primary/30 transition-all duration-500 flex flex-col h-full"
     >
-      {/* 4 Image Grid */}
-      <div className="grid grid-cols-2 gap-1">
-        {villa.images.slice(0, 4).map((image, imgIndex) => (
-          <div key={imgIndex} className="aspect-[4/3] overflow-hidden">
-            <img
-              src={image}
-              alt={`${villa.name} - Image ${imgIndex + 1}`}
-              className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-            />
-          </div>
-        ))}
-      </div>
+      {/* Image Section - Single or Grid */}
+      {isSingleImage ? (
+        <div className="aspect-[16/9] overflow-hidden">
+          <img
+            src={villa.images[0]}
+            alt={villa.name}
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 gap-1">
+          {villa.images.slice(0, 4).map((image, imgIndex) => (
+            <div key={imgIndex} className="aspect-[4/3] overflow-hidden">
+              <img
+                src={image}
+                alt={`${villa.name} - Image ${imgIndex + 1}`}
+                className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* Villa Details */}
-      <div className="p-6">
+      <div className="p-6 flex flex-col flex-grow">
         <div className="flex items-start justify-between mb-3">
           <h3 className="font-display text-2xl md:text-3xl text-foreground">
             {villa.name}
@@ -180,6 +165,18 @@ function VillaCard({ villa, index }: { villa: Villa; index: number }) {
           </div>
         </div>
 
+        {villa.detailsPdf && (
+          <button
+            onClick={handleSeeMore}
+            className="inline-flex items-center gap-1.5 text-primary hover:text-primary/80 text-sm font-medium transition-colors mb-4"
+          >
+            See More <ExternalLink className="w-3.5 h-3.5" />
+          </button>
+        )}
+
+        {/* Spacer to push buttons to bottom */}
+        <div className="flex-grow" />
+
         {/* Booking Buttons */}
         <BookingButtons variant="cta" />
       </div>
@@ -197,15 +194,7 @@ export default function VillaRental() {
 
       {/* Hero Section */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src={villa1}
-            alt="Luxury Villa Rental"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/50 to-transparent" />
-        </div>
+        <HeroCarousel images={heroImages} alt="Luxury Villa Rental" />
 
         <div ref={heroRef} className="container mx-auto px-6 relative z-10 text-center pt-24">
           <motion.div
@@ -249,26 +238,6 @@ export default function VillaRental() {
             Experience one of our carefully curated, handpicked villas in Marbella. Every holiday home we offer is personally vetted and inspected by Amor VIP. 
             Wake up to sunshine, take a refreshing dip in your private pool, and let us handle all of your concierge needs.
           </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-wrap justify-center gap-8 text-foreground/60"
-          >
-            <div className="flex items-center gap-2">
-              <Home className="w-5 h-5 text-primary" />
-              <span>8+ Luxury Villas</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Waves className="w-5 h-5 text-primary" />
-              <span>Private Pools</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <MapPin className="w-5 h-5 text-primary" />
-              <span>Prime Locations</span>
-            </div>
-          </motion.div>
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />

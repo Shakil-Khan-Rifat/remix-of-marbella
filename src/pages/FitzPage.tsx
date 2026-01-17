@@ -7,6 +7,9 @@ import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
 import fitzImg from "@/assets/nightclub-fitz.png";
 import fitzFloorPlan from "@/assets/fitz-floor-plan.png";
+import fitzDj from "@/assets/fitz-dj.png";
+import fitzCrowd from "@/assets/fitz-crowd.png";
+import fitzPerformance from "@/assets/fitz-performance.png";
 
 function ScrollToTop() {
   useEffect(() => {
@@ -17,8 +20,9 @@ function ScrollToTop() {
 
 const galleryImages = [
   { src: fitzImg, alt: "FITZ Main Bar" },
-  { src: fitzImg, alt: "FITZ Dance Floor" },
-  { src: fitzImg, alt: "FITZ VIP Area" },
+  { src: fitzDj, alt: "FITZ DJ Booth" },
+  { src: fitzCrowd, alt: "FITZ Dance Floor" },
+  { src: fitzPerformance, alt: "FITZ Live Performance" },
 ];
 
 const features = [

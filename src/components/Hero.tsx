@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import heroImage from "@/assets/hero-marbella-new.png";
+import heroImage from "@/assets/hero-marbella-panoramic.png";
 import BookingButtons from "./BookingButtons";
 
 export default function Hero() {

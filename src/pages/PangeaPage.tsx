@@ -7,6 +7,9 @@ import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
 import pangeaImg from "@/assets/nightclub-pangea.jpg";
 import pangeaFloorPlan from "@/assets/pangea-floor-plan.png";
+import pangeaParty from "@/assets/pangea-party.jpg";
+import pangeaAerial from "@/assets/pangea-aerial.jpeg";
+import pangeaTerrace from "@/assets/pangea-terrace.jpg";
 
 function ScrollToTop() {
   useEffect(() => {
@@ -17,8 +20,9 @@ function ScrollToTop() {
 
 const galleryImages = [
   { src: pangeaImg, alt: "Pangea Rooftop" },
-  { src: pangeaImg, alt: "Pangea VIP Area" },
-  { src: pangeaImg, alt: "Pangea Tower View" },
+  { src: pangeaTerrace, alt: "Pangea Terrace" },
+  { src: pangeaAerial, alt: "Pangea Tower View" },
+  { src: pangeaParty, alt: "Pangea VIP Party" },
 ];
 
 const features = [

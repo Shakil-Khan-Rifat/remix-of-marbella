@@ -6,7 +6,7 @@ import beachClubImg from "@/assets/service-beach-club.png";
 import yachtImg from "@/assets/service-yacht.png";
 import nightclubImg from "@/assets/service-nightclub.png";
 import villaImg from "@/assets/service-villa.png";
-import carImg from "@/assets/service-car.png";
+import carImg from "@/assets/car-hire-hero.jpg";
 
 
 import lifestyleImg from "@/assets/service-lifestyle.jpg";

@@ -5,28 +5,36 @@ import { Plus, Minus } from "lucide-react";
 
 const faqs = [
   {
-    question: "How far in advance should I book your services?",
-    answer: "We recommend booking at least 2-4 weeks in advance for peak season (June-September) to ensure availability of premium services like yacht charters and luxury villas. However, we also accommodate last-minute requests whenever possible.",
+    question: "Can we book multiple venues through you?",
+    answer: "Absolutely. We provide a seamless and efficient booking service, including expert recommendations tailored to your group's preferences, ensuring the best venues and experiences for your stay.",
   },
   {
-    question: "Do you offer group packages for events?",
-    answer: "Absolutely! We specialize in creating bespoke group itineraries for celebrations, corporate events, bachelor/bachelorette parties, and more. Our team will customize every aspect to suit your group's preferences and budget.",
+    question: "How much do pool clubs and nightclubs cost?",
+    answer: "Each venue sets its own pricing, which can vary based on group size, availability, season, and demand. Our team will advise you on the most suitable packages to match your group size, expectations, and budget.",
   },
   {
-    question: "What areas do you cover in Spain?",
-    answer: "Our primary focus is Marbella and the Costa del Sol region, including Puerto Banús, Estepona, and surrounding areas. We can also arrange services in other Spanish destinations upon request.",
+    question: "Are yacht charters available for three days or longer?",
+    answer: "Yes. We offer a selection of luxury yachts available for extended charters, including weekly and monthly options, fully customised to your requirements.",
   },
   {
-    question: "Is there a minimum spend or retainer required?",
-    answer: "We offer flexible options ranging from single service bookings to comprehensive concierge packages. There's no minimum spend for individual bookings, though some premium services may have their own requirements.",
+    question: "What is the minimum age to rent a luxury car?",
+    answer: "The minimum age is 25 years. A valid driving licence and passport ID are required.",
   },
   {
-    question: "Can you arrange airport transfers and transportation?",
-    answer: "Yes! We provide luxury airport transfers from Málaga Airport and arrange premium car rentals including supercars and classic vehicles. Our chauffeur service is also available for your entire stay.",
+    question: "Can you arrange private chefs, DJs, and entertainment at a villa?",
+    answer: "Yes. We specialise in private event planning, offering access to Marbella's finest private chefs, international DJs, dancers, and live performers to create unforgettable in-villa experiences.",
   },
   {
-    question: "Do you provide personal concierge hosts?",
-    answer: "Yes, our personal concierge host service is one of our most popular offerings. Your dedicated host will be available throughout your stay to handle reservations, solve any issues, and ensure your experience is seamless.",
+    question: "What are the benefits of booking with Amor VIP?",
+    answer: "Many of our clients choose to let us manage their entire stay from start to finish. We deliver a complete 360° Marbella experience, designing bespoke itineraries based on each group's lifestyle, preferences, and expectations. From planning to execution, we take care of every detail.",
+  },
+  {
+    question: "What are your costs?",
+    answer: "Our pricing is tailored to each client and depends on the level of service required. This may include individual venue bookings, full itinerary planning, private events, or complete lifestyle management.",
+  },
+  {
+    question: "What is Lifestyle Management?",
+    answer: "Lifestyle Management is our most exclusive service, designed for clients seeking the ultimate VIP Marbella experience. We curate, book, and manage every aspect of your trip. Our team provides meet-and-greet services, accompanies you to venues, and remains on hand throughout your experience to ensure everything runs flawlessly, with a dedicated manager available to handle any request or requirement.",
   },
 ];
 

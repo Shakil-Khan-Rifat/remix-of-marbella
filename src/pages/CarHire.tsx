@@ -2,13 +2,17 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
+import HeroCarousel from "@/components/HeroCarousel";
 
+import carHireHero from "@/assets/car-hire-hero.jpg";
 import carLamborghini from "@/assets/car-lamborghini-urus.jpg";
 import carMercedes from "@/assets/car-mercedes-gwagon.jpg";
 import carMclaren from "@/assets/car-mclaren-gt.jpg";
 import carPorsche from "@/assets/car-porsche-gt3.jpg";
 import carFerrari from "@/assets/car-ferrari-f8.jpg";
 import carRollsRoyce from "@/assets/car-rolls-royce.jpg";
+
+const heroImages = [carHireHero, carLamborghini, carMercedes, carMclaren, carPorsche, carFerrari, carRollsRoyce];
 
 const luxuryCars = [
   {
@@ -47,10 +51,11 @@ export default function CarHire() {
   return (
     <div className="min-h-screen bg-charcoal-light">
       <Navbar />
-      
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-4">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+        <HeroCarousel images={heroImages} alt="Luxury Car Hire" />
+        
+        <div className="relative z-10 max-w-4xl mx-auto text-center px-4 pt-24">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -63,7 +68,7 @@ export default function CarHire() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto"
+            className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto mb-8"
           >
             Experience Marbella in style with our exclusive selection of luxury vehicles. 
             Whether you're cruising in a Mercedes G-Wagon, Lamborghini Urus, Porsche 911, 

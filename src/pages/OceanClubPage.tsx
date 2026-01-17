@@ -6,6 +6,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
 import oceanImg from "@/assets/beach-club-ocean.jpg";
+import oceanClub1 from "@/assets/ocean-club-1.png";
+import oceanClub2 from "@/assets/ocean-club-2.png";
+import oceanClub3 from "@/assets/ocean-club-3.png";
 
 function ScrollToTop() {
   useEffect(() => {
@@ -16,27 +19,25 @@ function ScrollToTop() {
 
 const galleryImages = [
   { src: oceanImg, alt: "Ocean Club Pool" },
-  { src: oceanImg, alt: "Ocean Club Lounge" },
-  { src: oceanImg, alt: "Ocean Club Party" },
-  { src: oceanImg, alt: "Ocean Club VIP" },
+  { src: oceanClub1, alt: "Ocean Club Beachfront View" },
+  { src: oceanClub2, alt: "Ocean Club Poolside" },
+  { src: oceanClub3, alt: "Ocean Club Panorama" },
 ];
 
 const features = [
-  { icon: "🏊", title: "Saltwater Pool", description: "Stunning infinity pool overlooking the Mediterranean Sea" },
-  { icon: "🍾", title: "Champagne Service", description: "Premium bottle service with dedicated VIP hosts" },
+  { icon: "🏊", title: "Saltwater Pool", description: "Stunning pool overlooking the Mediterranean Sea" },
+  { icon: "🍾", title: "Champagne Service", description: "Premium bottle service" },
   { icon: "🎵", title: "Live Entertainment", description: "World-class DJs, dancers, and performers" },
   { icon: "🍽️", title: "Fine Dining", description: "Exquisite al fresco dining at Amai restaurant" },
 ];
 
 const amenities = [
-  "Infinity Pool",
+  "Saltwater Pool",
   "Bali Beds",
   "VIP Deck",
-  "Champagne Service",
+  "Bottle Service",
   "Live DJ",
   "Fine Dining",
-  "Beach Access",
-  "Private Events",
 ];
 
 const priceList = [
@@ -49,6 +50,9 @@ const priceList = [
   { area: "VIP Deck", persons: 10, price: "€1500", includes: "3x DOM Perignon" },
   { area: "Super VIP Square", persons: 10, price: "€1500", includes: "3x DOM Perignon" },
 ];
+
+// Set to true to show price list on the website
+const SHOW_PRICE_LIST = false;
 
 export default function OceanClubPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -141,11 +145,11 @@ export default function OceanClubPage() {
                 </div>
                 <div className="flex items-center gap-3 text-foreground/70">
                   <Phone className="w-5 h-5 text-primary" />
-                  <span className="text-sm">+34 952 908 137</span>
+                  <span className="text-sm">+34 600 25 01 54</span>
                 </div>
                 <div className="flex items-center gap-3 text-foreground/70">
                   <Star className="w-5 h-5 text-primary" />
-                  <span className="text-sm">Smart Elegant</span>
+                  <span className="text-sm">Dress Code: Beach Wear</span>
                 </div>
               </div>
             </motion.div>
@@ -180,33 +184,35 @@ export default function OceanClubPage() {
         </div>
       </section>
 
-      {/* Price List */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-              <span className="text-gradient-lime">Price List</span>
-            </h2>
-          </motion.div>
+      {/* Price List - Hidden for now, set SHOW_PRICE_LIST to true to enable */}
+      {SHOW_PRICE_LIST && (
+        <section className="py-16 md:py-24">
+          <div className="container mx-auto px-6">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+              <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
+                <span className="text-gradient-lime">Price List</span>
+              </h2>
+            </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-4xl mx-auto bg-charcoal-light rounded-2xl border border-primary/10 overflow-hidden">
-            <div className="grid grid-cols-4 gap-4 p-4 bg-primary/10 text-foreground font-medium text-sm">
-              <span>Area</span>
-              <span className="text-center">Persons</span>
-              <span className="text-center">Price</span>
-              <span>Includes</span>
-            </div>
-            {priceList.map((item, index) => (
-              <div key={index} className="grid grid-cols-4 gap-4 p-4 border-t border-primary/10 text-foreground/80 text-sm hover:bg-primary/5 transition-colors">
-                <span className="font-medium">{item.area}</span>
-                <span className="text-center">{item.persons}</span>
-                <span className="text-center text-primary font-medium">{item.price}</span>
-                <span className="text-foreground/60">{item.includes}</span>
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-4xl mx-auto bg-charcoal-light rounded-2xl border border-primary/10 overflow-hidden">
+              <div className="grid grid-cols-4 gap-4 p-4 bg-primary/10 text-foreground font-medium text-sm">
+                <span>Area</span>
+                <span className="text-center">Persons</span>
+                <span className="text-center">Price</span>
+                <span>Includes</span>
               </div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+              {priceList.map((item, index) => (
+                <div key={index} className="grid grid-cols-4 gap-4 p-4 border-t border-primary/10 text-foreground/80 text-sm hover:bg-primary/5 transition-colors">
+                  <span className="font-medium">{item.area}</span>
+                  <span className="text-center">{item.persons}</span>
+                  <span className="text-center text-primary font-medium">{item.price}</span>
+                  <span className="text-foreground/60">{item.includes}</span>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+      )}
 
       {/* Amenities Section */}
       <section className="py-16 bg-charcoal-light">
@@ -217,7 +223,7 @@ export default function OceanClubPage() {
             </h2>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="flex flex-wrap justify-center gap-4">
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="flex justify-center gap-4">
             {amenities.map((amenity, index) => (
               <motion.span key={amenity} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: index * 0.05 }} className="px-6 py-3 bg-background/50 text-foreground/80 rounded-full border border-primary/20 hover:border-primary/40 hover:text-primary transition-all duration-300">
                 {amenity}

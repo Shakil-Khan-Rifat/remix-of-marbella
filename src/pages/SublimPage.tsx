@@ -5,7 +5,10 @@ import { ArrowLeft, ChevronLeft, ChevronRight, MapPin, Clock, Phone, Star, Music
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
-import sublimImg from "@/assets/beach-club-sublim.png";
+import sublimImg from "@/assets/sublim-new.png";
+import sublim1 from "@/assets/sublim-1.jpg";
+import sublim2 from "@/assets/sublim-2.jpg";
+import sublim3 from "@/assets/sublim-3.jpg";
 
 function ScrollToTop() {
   useEffect(() => {
@@ -15,10 +18,10 @@ function ScrollToTop() {
 }
 
 const galleryImages = [
-  { src: sublimImg, alt: "Sublim Pool" },
-  { src: sublimImg, alt: "Sublim Lounge" },
-  { src: sublimImg, alt: "Sublim Sunset" },
-  { src: sublimImg, alt: "Sublim Architecture" },
+  { src: sublimImg, alt: "Sublim Beach Club" },
+  { src: sublim1, alt: "Sublim Sunbeds" },
+  { src: sublim2, alt: "Sublim Food" },
+  { src: sublim3, alt: "Sublim Cocktails" },
 ];
 
 const features = [
@@ -30,14 +33,15 @@ const features = [
 
 const amenities = [
   "Pool Area",
-  "Azteca Area",
   "Beach Area",
   "VIP Sunbeds",
   "Restaurant",
   "Cocktail Bar",
-  "Private Events",
   "Sunset Views",
 ];
+
+// Set to true to show price list on the website
+const SHOW_PRICE_LIST = false;
 
 export default function SublimPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -129,8 +133,8 @@ export default function SublimPage() {
                   <span className="text-sm">12 PM - Late</span>
                 </div>
                 <div className="flex items-center gap-3 text-foreground/70">
-                  <Music className="w-5 h-5 text-primary" />
-                  <span className="text-sm">House, Latin, Afro</span>
+                  <Phone className="w-5 h-5 text-primary" />
+                  <span className="text-sm">+34 600 25 01 54</span>
                 </div>
                 <div className="flex items-center gap-3 text-foreground/70">
                   <Star className="w-5 h-5 text-primary" />
@@ -169,52 +173,54 @@ export default function SublimPage() {
         </div>
       </section>
 
-      {/* Areas & Rates */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-              Our <span className="text-gradient-lime">Sunbeds</span>
-            </h2>
-            <p className="text-foreground/60 max-w-2xl mx-auto">
-              Our rates include the Sunbed rental, a food and beverage minimum and access to the pool, Azteca and beach area. Contact our concierge for seasonal pricing.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="p-6 bg-charcoal-light rounded-2xl border border-primary/10 text-center">
-              <h3 className="font-display text-xl text-foreground mb-4">Pool Area</h3>
-              <p className="text-foreground/60 text-sm mb-4">Premium poolside positioning with stunning views</p>
-              <ul className="space-y-2 text-foreground/70 text-sm">
-                <li>Solo Sunbed</li>
-                <li>Double Sunbed</li>
-                <li>Daybed</li>
-                <li>VIP Sunbed</li>
-              </ul>
+      {/* Areas & Rates - Hidden for now, set SHOW_PRICE_LIST to true to enable */}
+      {SHOW_PRICE_LIST && (
+        <section className="py-16 md:py-24">
+          <div className="container mx-auto px-6">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+              <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
+                Our <span className="text-gradient-lime">Sunbeds</span>
+              </h2>
+              <p className="text-foreground/60 max-w-2xl mx-auto">
+                Our rates include the Sunbed rental, a food and beverage minimum and access to the pool, Azteca and beach area. Contact our concierge for seasonal pricing.
+              </p>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="p-6 bg-charcoal-light rounded-2xl border border-primary/10 text-center">
-              <h3 className="font-display text-xl text-foreground mb-4">Azteca Area</h3>
-              <p className="text-foreground/60 text-sm mb-4">Exclusive elevated section with panoramic views</p>
-              <ul className="space-y-2 text-foreground/70 text-sm">
-                <li>Double Aztec Sunbed</li>
-                <li>Family Sunbed</li>
-                <li>Royal Aztec</li>
-              </ul>
-            </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="p-6 bg-charcoal-light rounded-2xl border border-primary/10 text-center">
+                <h3 className="font-display text-xl text-foreground mb-4">Pool Area</h3>
+                <p className="text-foreground/60 text-sm mb-4">Premium poolside positioning with stunning views</p>
+                <ul className="space-y-2 text-foreground/70 text-sm">
+                  <li>Solo Sunbed</li>
+                  <li>Double Sunbed</li>
+                  <li>Daybed</li>
+                  <li>VIP Sunbed</li>
+                </ul>
+              </motion.div>
 
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="p-6 bg-charcoal-light rounded-2xl border border-primary/10 text-center">
-              <h3 className="font-display text-xl text-foreground mb-4">Beach Area</h3>
-              <p className="text-foreground/60 text-sm mb-4">Direct beachfront access with Mediterranean views</p>
-              <ul className="space-y-2 text-foreground/70 text-sm">
-                <li>Beach Solo</li>
-                <li>Beach Double</li>
-                <li>Beach VIP</li>
-              </ul>
-            </motion.div>
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="p-6 bg-charcoal-light rounded-2xl border border-primary/10 text-center">
+                <h3 className="font-display text-xl text-foreground mb-4">Azteca Area</h3>
+                <p className="text-foreground/60 text-sm mb-4">Exclusive elevated section with panoramic views</p>
+                <ul className="space-y-2 text-foreground/70 text-sm">
+                  <li>Double Aztec Sunbed</li>
+                  <li>Family Sunbed</li>
+                  <li>Royal Aztec</li>
+                </ul>
+              </motion.div>
+
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="p-6 bg-charcoal-light rounded-2xl border border-primary/10 text-center">
+                <h3 className="font-display text-xl text-foreground mb-4">Beach Area</h3>
+                <p className="text-foreground/60 text-sm mb-4">Direct beachfront access with Mediterranean views</p>
+                <ul className="space-y-2 text-foreground/70 text-sm">
+                  <li>Beach Solo</li>
+                  <li>Beach Double</li>
+                  <li>Beach VIP</li>
+                </ul>
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Amenities Section */}
       <section className="py-16 bg-charcoal-light">
@@ -225,7 +231,7 @@ export default function SublimPage() {
             </h2>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="flex flex-wrap justify-center gap-4">
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="flex justify-center gap-4">
             {amenities.map((amenity, index) => (
               <motion.span key={amenity} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: index * 0.05 }} className="px-6 py-3 bg-background/50 text-foreground/80 rounded-full border border-primary/20 hover:border-primary/40 hover:text-primary transition-all duration-300">
                 {amenity}

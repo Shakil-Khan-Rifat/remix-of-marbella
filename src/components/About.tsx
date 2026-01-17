@@ -70,7 +70,7 @@ export default function About() {
               <span className="text-gradient-gold"> we create unforgettable moments.</span>"
             </p>
             <p className="text-primary mt-4 tracking-wider text-sm uppercase">
-              Let us elevate your escape
+              Elevate Your Escape
             </p>
           </motion.div>
         </div>

@@ -6,17 +6,20 @@ import { ArrowLeft, Anchor, Users, Ruler, Fuel, UtensilsCrossed, Music, Waves } 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
+import HeroCarousel from "@/components/HeroCarousel";
+import { Button } from "@/components/ui/button";
 import yachtHeroImg from "@/assets/service-yacht.png";
 import yachtGolden from "@/assets/yacht-golden.png";
 import yachtTarela from "@/assets/yacht-tarela.png";
-import yachtColeby from "@/assets/yacht-coleby.png";
-import yachtVibe from "@/assets/yacht-vibe.png";
+import yachtSundancer from "@/assets/yacht-sundancer.png";
+import yachtAiconForever from "@/assets/yacht-aicon-forever.png";
 import yachtLouisCarbon from "@/assets/yacht-louis-carbon.png";
-import yachtAvaco from "@/assets/yacht-avaco.png";
-import yachtBrisas from "@/assets/yacht-brisas.png";
-import yachtNina from "@/assets/yacht-nina.png";
+import yachtMrsAmber from "@/assets/yacht-mrs-amber.png";
+import yachtMahiMahi from "@/assets/yacht-mahi-mahi.png";
 import yachtMalex from "@/assets/yacht-malex.png";
-import yachtValletta from "@/assets/yacht-valletta.png";
+import yachtCranchi from "@/assets/yacht-cranchi.png";
+
+const heroImages = [yachtHeroImg, yachtGolden, yachtTarela, yachtSundancer, yachtMalex];
 
 const yachts = [
   {
@@ -27,6 +30,7 @@ const yachts = [
     prices: { "2H": "€550 (inc. VAT)", "4H": "€1,050", "6H": "€1,500" },
     image: yachtGolden,
     featured: true,
+    detailsPdf: "/yachts/golden.pdf",
   },
   {
     name: "TARELA",
@@ -35,66 +39,52 @@ const yachts = [
     includes: ["Captain", "Fuel", "2x Champagne bottles", "Snacks"],
     prices: { "2H": "€600", "3H": "€850", "4H": "€1,100", "6H": "€1,500" },
     image: yachtTarela,
+    detailsPdf: "/yachts/tarela.pdf",
   },
   {
-    name: "COLEBY",
-    length: "15.5m",
-    capacity: "11 passengers",
-    includes: ["Captain", "Fuel", "Drinks/Snacks"],
-    prices: { "2H": "€1,100 (inc. VAT)", "4H": "€1,600", "8H": "€2,620" },
-    image: yachtColeby,
+    name: "SUNDANCER 540",
+    length: "16.70m",
+    capacity: "11 passengers + crew",
+    includes: ["Padel Surf", "Sound System", "Cava & Beers", "Soft Drinks"],
+    prices: { "2H": "€1,000", "4H": "€1,600", "6H": "€2,000", "8H": "€2,400" },
+    image: yachtSundancer,
+    detailsPdf: "/yachts/sundancer.pdf",
   },
   {
-    name: "VIBE",
-    subtitle: "Sunseeker",
-    length: "15.5m",
-    capacity: "12 passengers",
-    includes: ["Captain", "Crew", "Drinks/Snacks", "Paddleboard"],
-    prices: { "4H": "€1,700 (inc. VAT)", "6H": "€2,900" },
-    image: yachtVibe,
+    name: "AICON 72 HT - FOREVER",
+    length: "22m",
+    capacity: "10 passengers",
+    includes: ["Jet Sky", "Sea Scooter", "SUP", "Cocktails & Drinks"],
+    prices: { "4H": "€2,500", "6H": "€3,500", "8H": "€4,800" },
+    image: yachtAiconForever,
   },
   {
-    name: "LOUIS CARBON",
+    name: "CARBON",
     subtitle: "Sport",
     length: "11.5m",
     capacity: "10 passengers",
     includes: ["Captain", "Fuel", "Wine", "Soft Drinks", "Snacks", "Towels", "Snorkels", "Seabob", "Sunshade", "Fusion Sound System"],
     prices: { "2H": "€1,100", "4H": "€1,800", "8H": "€2,900" },
     image: yachtLouisCarbon,
+    detailsPdf: "/yachts/carbon.pdf",
   },
   {
-    name: "AVACO",
-    length: "19.5m",
-    capacity: "10 (3 Cabins / 6 Guests)",
-    includes: ["Drinks", "Snacks"],
-    prices: { "4H": "€3,000", "6H": "€4,000", "8H": "€5,000" },
-    image: yachtAvaco,
+    name: "MRS AMBER",
+    length: "10m",
+    capacity: "9 passengers",
+    includes: ["Captain", "Fuel", "Drinks", "Snacks"],
+    prices: { "2H": "€450", "4H": "€700", "6H": "€920", "8H": "€1,450" },
+    image: yachtMrsAmber,
+    detailsPdf: "/yachts/mrs-amber.pdf",
   },
   {
-    name: "BRISAS",
-    length: "15.2m",
-    capacity: "12 passengers",
-    includes: ["Captain", "Crew", "Drinks/Snacks", "Paddleboard", "Jet Ski"],
-    prices: { "4H": "€1,700", "8H": "€2,900" },
-    image: yachtBrisas,
-  },
-  {
-    name: "BELVEDERE",
-    length: "14m",
+    name: "MAHI MAHI",
+    length: "12m",
     capacity: "11 passengers",
-    includes: ["Captain", "Fuel", "Paddle", "Drone"],
-    prices: { "4H": "€2,000", "8H": "€4,200" },
-    image: yachtHeroImg,
-  },
-  {
-    name: "NINA",
-    subtitle: "Mangusta",
-    length: "26m",
-    capacity: "12 passengers",
-    includes: ["Captain", "Crew", "Drinks/Snacks", "Jacuzzi", "Jet Ski", "Water Toys"],
-    prices: { "4H": "€4,750 (inc. VAT)", "8H": "€7,900" },
-    image: yachtNina,
-    premium: true,
+    includes: ["Captain", "Fuel", "Drinks", "Fishing Equipment"],
+    prices: { "2H": "€550", "4H": "€950", "6H": "€1,200", "8H": "€1,650" },
+    image: yachtMahiMahi,
+    detailsPdf: "/yachts/mahi-mahi.pdf",
   },
   {
     name: "MALEX",
@@ -105,16 +95,16 @@ const yachts = [
     prices: { "4H": "€6,050 (inc. VAT)", "8H": "€9,680" },
     image: yachtMalex,
     premium: true,
+    detailsPdf: "/yachts/malex.pdf",
   },
   {
-    name: "VALLETTA",
-    subtitle: "Riva 82",
-    length: "25m",
-    capacity: "12 passengers",
-    includes: ["Captain", "Fuel", "Champagne", "Wine", "Soft Drinks", "Snacks", "Towels"],
-    prices: { "4H": "€11,150 (inc. VAT)", "8H": "€15,250" },
-    image: yachtValletta,
-    premium: true,
+    name: "CRANCHI",
+    length: "12m",
+    capacity: "9 passengers",
+    includes: ["Captain", "Fuel", "Drinks", "Snacks"],
+    prices: { "2H": "€680", "4H": "€980", "8H": "€1,700" },
+    image: yachtCranchi,
+    detailsPdf: "/yachts/cranchi.pdf",
   },
 ];
 
@@ -192,15 +182,10 @@ function YachtCard({ yacht, index }: { yacht: typeof yachts[0]; index: number })
               {item}
             </span>
           ))}
-          {yacht.includes.length > 4 && (
-            <span className="px-2 py-0.5 bg-primary/5 text-primary/70 text-xs rounded-full">
-              +{yacht.includes.length - 4} more
-            </span>
-          )}
         </div>
 
         <div className="border-t border-primary/10 pt-4 flex-grow">
-          <span className="text-xs text-foreground/50 uppercase tracking-wider">Prices</span>
+          <span className="text-xs text-foreground/50 uppercase tracking-wider">Starting from</span>
           <div className="flex flex-wrap gap-3 mt-2">
             {Object.entries(yacht.prices).map(([duration, price]) => (
               <div key={duration} className="text-center">
@@ -211,8 +196,15 @@ function YachtCard({ yacht, index }: { yacht: typeof yachts[0]; index: number })
           </div>
         </div>
 
-        <div className="mt-5 pt-4 border-t border-primary/10">
-          <BookingButtons variant="compact" hideCall className="w-full" />
+        <div className="mt-5 pt-4 border-t border-primary/10 space-y-3">
+          <Button 
+            variant="outline" 
+            className="w-full border-primary/30 text-primary hover:bg-primary/10 hover:border-primary"
+            onClick={() => window.open(yacht.detailsPdf || '/yachts/default.pdf', '_blank')}
+          >
+            See Details
+          </Button>
+          <BookingButtons variant="compact" className="w-full" />
         </div>
       </div>
 
@@ -230,17 +222,8 @@ export default function YachtCharter() {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      {/* Hero Section */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src={yachtHeroImg}
-            alt="Luxury Yacht Charter"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/50 to-transparent" />
-        </div>
+        <HeroCarousel images={heroImages} alt="Luxury Yacht Charter" />
 
         <div ref={heroRef} className="container mx-auto px-6 relative z-10 text-center pt-24">
           <motion.div
@@ -285,29 +268,6 @@ export default function YachtCharter() {
             fleet of yachts for an unforgettable journey along the Costa del Sol.
           </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-wrap justify-center gap-8 text-foreground/60"
-          >
-            <div className="flex items-center gap-2">
-              <Waves className="w-5 h-5 text-primary" />
-              <span>11 Luxury Yachts</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Fuel className="w-5 h-5 text-primary" />
-              <span>Fuel Included</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <UtensilsCrossed className="w-5 h-5 text-primary" />
-              <span>Catering Available</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Music className="w-5 h-5 text-primary" />
-              <span>Premium Sound</span>
-            </div>
-          </motion.div>
         </div>
 
         {/* Animated wave decoration */}
@@ -327,7 +287,7 @@ export default function YachtCharter() {
               Our <span className="text-gradient-lime">Fleet</span>
             </h2>
             <p className="text-foreground/60 max-w-xl mx-auto">
-              All prices include Captain, crew, and fuel. Docking fees extra.
+              All prices include Captain, crew, fuel, and docking fees.
             </p>
           </motion.div>
 
@@ -343,7 +303,7 @@ export default function YachtCharter() {
             viewport={{ once: true }}
             className="text-center text-foreground/50 text-sm mt-12"
           >
-            * All charter prices are indicative. VAT, Captain, crew, fuel, docking fees extra unless specified.
+            * All charter prices are indicative. VAT extra unless specified. Docking fees included.
           </motion.p>
         </div>
       </section>

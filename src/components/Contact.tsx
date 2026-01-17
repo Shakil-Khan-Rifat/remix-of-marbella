@@ -14,6 +14,7 @@ export default function Contact() {
     lastName: "",
     email: "",
     phone: "",
+    date: "",
     message: "",
   });
 
@@ -25,6 +26,7 @@ export default function Contact() {
     const body = `Name: ${formData.firstName} ${formData.lastName}
 Email: ${formData.email}
 Phone: ${formData.phone || "Not provided"}
+Preferred Date: ${formData.date || "Not specified"}
 
 Message:
 ${formData.message}`;
@@ -37,7 +39,7 @@ ${formData.message}`;
       title: "Opening Email",
       description: "Complete sending your message in the new tab.",
     });
-    setFormData({ firstName: "", lastName: "", email: "", phone: "", message: "" });
+    setFormData({ firstName: "", lastName: "", email: "", phone: "", date: "", message: "" });
   };
 
   return (
@@ -142,15 +144,26 @@ ${formData.message}`;
                 />
               </div>
 
-              <div className="mb-6">
-                <label className="block text-sm text-foreground/60 mb-2">Phone</label>
-                <input
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full bg-muted border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary transition-colors"
-                  placeholder="+34 XXX XXX XXX"
-                />
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label className="block text-sm text-foreground/60 mb-2">Phone</label>
+                  <input
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="w-full bg-muted border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary transition-colors"
+                    placeholder="+34 XXX XXX XXX"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm text-foreground/60 mb-2">Preferred Date</label>
+                  <input
+                    type="date"
+                    value={formData.date}
+                    onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                    className="w-full bg-muted border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary transition-colors"
+                  />
+                </div>
               </div>
 
               <div className="mb-8">
