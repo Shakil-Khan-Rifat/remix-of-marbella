@@ -1,15 +1,21 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ChevronLeft, ChevronRight, MapPin, Clock, Music, Star } from "lucide-react";
+import { ArrowLeft, MapPin, Clock, Music, Star } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
-import pangeaImg from "@/assets/nightclub-pangea.jpg";
+import VenueGalleryCarousel from "@/components/VenueGalleryCarousel";
+import pangeaHero from "@/assets/pangea-hero.jpg";
 import pangeaFloorPlan from "@/assets/pangea-floor-plan.png";
-import pangeaParty from "@/assets/pangea-party.jpg";
-import pangeaAerial from "@/assets/pangea-aerial.jpeg";
-import pangeaTerrace from "@/assets/pangea-terrace.jpg";
+import pangeaGallery1 from "@/assets/pangea-gallery-1.jpg";
+import pangeaGallery2 from "@/assets/pangea-gallery-2.jpg";
+import pangeaGallery3 from "@/assets/pangea-gallery-3.jpg";
+import pangeaGallery4 from "@/assets/pangea-gallery-4.jpg";
+import pangeaGallery5 from "@/assets/pangea-gallery-5.jpg";
+import pangeaGallery6 from "@/assets/pangea-gallery-6.jpg";
+import pangeaGallery7 from "@/assets/pangea-gallery-7.jpg";
+import pangeaGallery8 from "@/assets/pangea-gallery-8.jpg";
 
 function ScrollToTop() {
   useEffect(() => {
@@ -19,17 +25,20 @@ function ScrollToTop() {
 }
 
 const galleryImages = [
-  { src: pangeaImg, alt: "Pangea Rooftop" },
-  { src: pangeaTerrace, alt: "Pangea Terrace" },
-  { src: pangeaAerial, alt: "Pangea Tower View" },
-  { src: pangeaParty, alt: "Pangea VIP Party" },
+  { src: pangeaGallery1, alt: "Pangea Rooftop Crowd" },
+  { src: pangeaGallery2, alt: "Pangea DJ Booth" },
+  { src: pangeaGallery3, alt: "Pangea VIP Party" },
+  { src: pangeaGallery4, alt: "Pangea Terrace Sunset" },
+  { src: pangeaGallery5, alt: "Pangea Exterior" },
+  { src: pangeaGallery6, alt: "Pangea Bottle Service" },
+  { src: pangeaGallery7, alt: "Pangea Tower View" },
+  { src: pangeaGallery8, alt: "Pangea Night Party" },
 ];
 
 const features = [
-  { icon: "🏰", title: "Iconic Tower", description: "Stunning medieval tower as the venue's centerpiece" },
-  { icon: "🌊", title: "Sea Views", description: "Breathtaking Mediterranean panoramas" },
-  { icon: "🍸", title: "Premium Cocktails", description: "Expert mixology with premium spirits" },
-  { icon: "✨", title: "Exclusive Entry", description: "Intimate atmosphere with selective door policy" },
+  { icon: "🌊", title: "Rooftop Location with Marina Views", description: "A standout open-air terrace overlooking Puerto Banús and the Mediterranean" },
+  { icon: "🎧", title: "Weekly Events & DJs", description: "From Famous Fridays to summer party nights and DJ sets that keep the vibe lively" },
+  { icon: "🍾", title: "VIP Tables & Premium Service", description: "Stylish bottle service and high-end crowd for celebrations and elevated nights" },
 ];
 
 const tableOptions = [
@@ -50,49 +59,16 @@ const tableOptions = [
 ];
 
 export default function PangeaPage() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % galleryImages.length);
-  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
-
-  useEffect(() => {
-    const interval = setInterval(nextSlide, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <main className="min-h-screen bg-background">
       <ScrollToTop />
       <Navbar />
 
-      {/* Hero Image Carousel */}
+      {/* Hero Section - Single Image */}
       <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
         <div className="absolute inset-0">
-          {galleryImages.map((image, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: index === currentSlide ? 1 : 0 }}
-              transition={{ duration: 0.7 }}
-              className="absolute inset-0"
-            >
-              <img src={image.src} alt={image.alt} className="w-full h-full object-cover" />
-            </motion.div>
-          ))}
-          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background" />
-        </div>
-
-        <button onClick={prevSlide} className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-background/30 backdrop-blur-sm rounded-full border border-primary/20 hover:bg-background/50 transition-all duration-300">
-          <ChevronLeft className="w-6 h-6 text-foreground" />
-        </button>
-        <button onClick={nextSlide} className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-background/30 backdrop-blur-sm rounded-full border border-primary/20 hover:bg-background/50 transition-all duration-300">
-          <ChevronRight className="w-6 h-6 text-foreground" />
-        </button>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-          {galleryImages.map((_, index) => (
-            <button key={index} onClick={() => setCurrentSlide(index)} className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentSlide ? "w-8 bg-primary" : "bg-foreground/40"}`} />
-          ))}
+          <img src={pangeaHero} alt="Pangea Marbella" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-overlay" />
         </div>
 
         <div className="absolute bottom-20 left-0 right-0 z-10 text-center">
@@ -113,20 +89,17 @@ export default function PangeaPage() {
         </Link>
       </section>
 
-      {/* About Section */}
+      {/* About Section with Gallery */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
               <span className="text-primary tracking-[0.4em] uppercase text-sm block mb-4">About The Venue</span>
               <h2 className="font-display text-4xl md:text-5xl text-foreground mb-6">
-                Mediterranean <span className="text-gradient-lime">Rooftop Paradise</span>
+                Iconic <span className="text-gradient-lime">Nightlife Destination</span>
               </h2>
-              <p className="text-foreground/60 text-lg leading-relaxed mb-6">
-                Pangea is an exclusive rooftop club experience overlooking Puerto Banús and the Mediterranean Sea. Featuring a stunning medieval tower as its centerpiece, the venue offers an intimate and sophisticated atmosphere.
-              </p>
-              <p className="text-foreground/60 leading-relaxed mb-8">
-                With premium cocktails, world-class DJs, and breathtaking sea views, Pangea delivers an unparalleled nightlife experience. The outdoor terrace and indoor spaces create the perfect setting for unforgettable summer nights.
+              <p className="text-foreground/60 text-lg leading-relaxed mb-8">
+                Pangea is one of Puerto Banús' most iconic nightlife destinations — a rooftop nightclub and terrace bar perched above the marina with panoramic views over the yachts and Mediterranean. It's known for its glamorous setting, international crowd, live DJs, and weekly party programming that draws both locals and visitors looking for a premium nightlife experience.
               </p>
 
               <div className="grid grid-cols-2 gap-4">
@@ -149,11 +122,7 @@ export default function PangeaPage() {
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="relative">
-              <img src={pangeaImg} alt="Pangea Marbella" className="w-full h-[500px] object-cover rounded-2xl" />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-background/40 to-transparent" />
-              <div className="absolute -top-4 -right-4 w-full h-full border-2 border-primary/30 rounded-2xl -z-10" />
-            </motion.div>
+            <VenueGalleryCarousel images={galleryImages} />
           </div>
         </div>
       </section>
@@ -167,7 +136,7 @@ export default function PangeaPage() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <motion.div key={feature.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }} className="text-center p-6 bg-background/50 rounded-xl border border-primary/10 hover:border-primary/30 transition-colors duration-300">
                 <span className="text-4xl mb-4 block">{feature.icon}</span>

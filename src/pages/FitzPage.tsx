@@ -1,15 +1,17 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ChevronLeft, ChevronRight, MapPin, Clock, Music, Star } from "lucide-react";
+import { ArrowLeft, MapPin, Clock, Music, Star } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
-import fitzImg from "@/assets/nightclub-fitz.png";
+import VenueGalleryCarousel from "@/components/VenueGalleryCarousel";
+import fitzHero from "@/assets/fitz-hero.jpg";
 import fitzFloorPlan from "@/assets/fitz-floor-plan.png";
-import fitzDj from "@/assets/fitz-dj.png";
-import fitzCrowd from "@/assets/fitz-crowd.png";
-import fitzPerformance from "@/assets/fitz-performance.png";
+import fitzGallery1 from "@/assets/fitz-gallery-1.jpg";
+import fitzGallery2 from "@/assets/fitz-gallery-2.jpg";
+import fitzGallery3 from "@/assets/fitz-gallery-3.jpg";
+import fitzGallery4 from "@/assets/fitz-gallery-4.jpg";
 
 function ScrollToTop() {
   useEffect(() => {
@@ -19,17 +21,16 @@ function ScrollToTop() {
 }
 
 const galleryImages = [
-  { src: fitzImg, alt: "FITZ Main Bar" },
-  { src: fitzDj, alt: "FITZ DJ Booth" },
-  { src: fitzCrowd, alt: "FITZ Dance Floor" },
-  { src: fitzPerformance, alt: "FITZ Live Performance" },
+  { src: fitzGallery1, alt: "FITZ Live Performance" },
+  { src: fitzGallery2, alt: "FITZ Dance Floor" },
+  { src: fitzGallery3, alt: "FITZ DJ Booth" },
+  { src: fitzGallery4, alt: "FITZ Interior" },
 ];
 
 const features = [
-  { icon: "🎵", title: "Premium Sound", description: "State-of-the-art sound system for an immersive audio experience" },
-  { icon: "✨", title: "Light Shows", description: "Stunning visual displays and cutting-edge lighting design" },
-  { icon: "🍾", title: "VIP Service", description: "Exclusive bottle service with dedicated staff" },
-  { icon: "🎧", title: "Top DJs", description: "World-class DJs and live performances nightly" },
+  { icon: "🎧", title: "Top DJs & Sound System", description: "Commercial house and hip-hop that keeps the floor full" },
+  { icon: "✨", title: "Luxury Without Attitude", description: "VIP feel with a relaxed, welcoming vibe" },
+  { icon: "🌙", title: "Peak Late-Night Energy", description: "Consistently buzzing until close" },
 ];
 
 const priceList = [
@@ -50,49 +51,16 @@ const priceList = [
 ];
 
 export default function FitzPage() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % galleryImages.length);
-  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
-
-  useEffect(() => {
-    const interval = setInterval(nextSlide, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <main className="min-h-screen bg-background">
       <ScrollToTop />
       <Navbar />
 
-      {/* Hero Image Carousel */}
+      {/* Hero Section - Single Image */}
       <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
         <div className="absolute inset-0">
-          {galleryImages.map((image, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: index === currentSlide ? 1 : 0 }}
-              transition={{ duration: 0.7 }}
-              className="absolute inset-0"
-            >
-              <img src={image.src} alt={image.alt} className="w-full h-full object-cover" />
-            </motion.div>
-          ))}
-          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background" />
-        </div>
-
-        <button onClick={prevSlide} className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-background/30 backdrop-blur-sm rounded-full border border-primary/20 hover:bg-background/50 transition-all duration-300">
-          <ChevronLeft className="w-6 h-6 text-foreground" />
-        </button>
-        <button onClick={nextSlide} className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-background/30 backdrop-blur-sm rounded-full border border-primary/20 hover:bg-background/50 transition-all duration-300">
-          <ChevronRight className="w-6 h-6 text-foreground" />
-        </button>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-          {galleryImages.map((_, index) => (
-            <button key={index} onClick={() => setCurrentSlide(index)} className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentSlide ? "w-8 bg-primary" : "bg-foreground/40"}`} />
-          ))}
+          <img src={fitzHero} alt="FITZ Marbella" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-overlay" />
         </div>
 
         <div className="absolute bottom-20 left-0 right-0 z-10 text-center">
@@ -113,20 +81,17 @@ export default function FitzPage() {
         </Link>
       </section>
 
-      {/* About Section */}
+      {/* About Section with Gallery */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
               <span className="text-primary tracking-[0.4em] uppercase text-sm block mb-4">About The Venue</span>
               <h2 className="font-display text-4xl md:text-5xl text-foreground mb-6">
-                Premier <span className="text-gradient-lime">Nightlife Hotspot</span>
+                High-Energy <span className="text-gradient-lime">Late-Night Club</span>
               </h2>
-              <p className="text-foreground/60 text-lg leading-relaxed mb-6">
-                Fitz Marbella is a premier nightlife hotspot in Puerto Banús, blending luxury with high-energy entertainment. Its sleek design, state-of-the-art sound, and vibrant atmosphere create the perfect setting for unforgettable nights.
-              </p>
-              <p className="text-foreground/60 leading-relaxed mb-8">
-                With top DJs, live performances, and expertly crafted cocktails, Fitz delivers an electrifying experience in the heart of Marbella's nightlife scene.
+              <p className="text-foreground/60 text-lg leading-relaxed mb-8">
+                Fitz Nightclub Marbella is a high-energy, late-night club in Puerto Banús known for its stylish setting, international crowd, and electric atmosphere. A go-to spot after midnight, it delivers polished Marbella nightlife without losing its edge.
               </p>
 
               <div className="grid grid-cols-2 gap-4">
@@ -149,11 +114,7 @@ export default function FitzPage() {
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="relative">
-              <img src={fitzImg} alt="FITZ Marbella" className="w-full h-[500px] object-cover rounded-2xl" />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-background/40 to-transparent" />
-              <div className="absolute -top-4 -right-4 w-full h-full border-2 border-primary/30 rounded-2xl -z-10" />
-            </motion.div>
+            <VenueGalleryCarousel images={galleryImages} />
           </div>
         </div>
       </section>
@@ -167,7 +128,7 @@ export default function FitzPage() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <motion.div key={feature.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }} className="text-center p-6 bg-background/50 rounded-xl border border-primary/10 hover:border-primary/30 transition-colors duration-300">
                 <span className="text-4xl mb-4 block">{feature.icon}</span>

@@ -112,7 +112,7 @@
   }
 
   .bg-gradient-overlay {
-    background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
+    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 100%);
   }
 
   .border-gradient-lime {

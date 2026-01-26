@@ -1,14 +1,16 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ChevronLeft, ChevronRight, MapPin, Clock, Phone, Star } from "lucide-react";
+import { ArrowLeft, MapPin, Clock, Music, Star } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
+import VenueGalleryCarousel from "@/components/VenueGalleryCarousel";
 import nikkiImg from "@/assets/beach-club-nikki.png";
-import nikki1 from "@/assets/nikki-1.png";
-import nikki2 from "@/assets/nikki-2.png";
-import nikki3 from "@/assets/nikki-3.png";
+import nikkiGallery1 from "@/assets/nikki-gallery-1.jpg";
+import nikkiGallery2 from "@/assets/nikki-gallery-2.jpg";
+import nikkiGallery3 from "@/assets/nikki-gallery-3.jpg";
+import nikkiGallery4 from "@/assets/nikki-gallery-4.jpg";
 
 function ScrollToTop() {
   useEffect(() => {
@@ -18,9 +20,10 @@ function ScrollToTop() {
 }
 
 const galleryImages = [
-  { src: nikki1, alt: "Nikki Beach Tipi" },
-  { src: nikki2, alt: "Nikki Beach Dining" },
-  { src: nikki3, alt: "Nikki Beach Party" },
+  { src: nikkiGallery1, alt: "Nikki Beach Pool Overview" },
+  { src: nikkiGallery2, alt: "Nikki Beach Party" },
+  { src: nikkiGallery3, alt: "Nikki Beach Pool" },
+  { src: nikkiGallery4, alt: "Nikki Beach Lounge Area" },
 ];
 
 const features = [
@@ -30,62 +33,21 @@ const features = [
   { icon: "🎵", title: "Live Entertainment", description: "World-class dining with live music and dancers" },
 ];
 
-const amenities = [
-  "Beach Access",
-  "Pool Beds",
-  "Cabanas",
-  "VIP Service",
-  "Fine Dining",
-  "DJ Sets",
-];
 
 // Set to true to show price list on the website
 const SHOW_PRICE_LIST = false;
 
 export default function NikkiBeachPage() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % galleryImages.length);
-  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
-
-  useEffect(() => {
-    const interval = setInterval(nextSlide, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <main className="min-h-screen bg-background">
       <ScrollToTop />
       <Navbar />
 
-      {/* Hero Image Carousel */}
+      {/* Static Hero Image */}
       <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
         <div className="absolute inset-0">
-          {galleryImages.map((image, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: index === currentSlide ? 1 : 0 }}
-              transition={{ duration: 0.7 }}
-              className="absolute inset-0"
-            >
-              <img src={image.src} alt={image.alt} className="w-full h-full object-cover" />
-            </motion.div>
-          ))}
-          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background" />
-        </div>
-
-        <button onClick={prevSlide} className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-background/30 backdrop-blur-sm rounded-full border border-primary/20 hover:bg-background/50 transition-all duration-300">
-          <ChevronLeft className="w-6 h-6 text-foreground" />
-        </button>
-        <button onClick={nextSlide} className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-background/30 backdrop-blur-sm rounded-full border border-primary/20 hover:bg-background/50 transition-all duration-300">
-          <ChevronRight className="w-6 h-6 text-foreground" />
-        </button>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-          {galleryImages.map((_, index) => (
-            <button key={index} onClick={() => setCurrentSlide(index)} className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentSlide ? "w-8 bg-primary" : "bg-foreground/40"}`} />
-          ))}
+          <img src={nikkiImg} alt="Nikki Beach" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-overlay" />
         </div>
 
         <div className="absolute bottom-20 left-0 right-0 z-10 text-center">
@@ -132,8 +94,8 @@ export default function NikkiBeachPage() {
                   <span className="text-sm">11:00 AM - Late</span>
                 </div>
                 <div className="flex items-center gap-3 text-foreground/70">
-                  <Phone className="w-5 h-5 text-primary" />
-                  <span className="text-sm">+34 600 25 01 54</span>
+                  <Music className="w-5 h-5 text-primary" />
+                  <span className="text-sm">Live Entertainment</span>
                 </div>
                 <div className="flex items-center gap-3 text-foreground/70">
                   <Star className="w-5 h-5 text-primary" />
@@ -142,11 +104,7 @@ export default function NikkiBeachPage() {
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="relative">
-              <img src={nikkiImg} alt="Nikki Beach" className="w-full h-[500px] object-cover rounded-2xl" />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-background/40 to-transparent" />
-              <div className="absolute -top-4 -right-4 w-full h-full border-2 border-primary/30 rounded-2xl -z-10" />
-            </motion.div>
+            <VenueGalleryCarousel images={galleryImages} />
           </div>
         </div>
       </section>
@@ -209,24 +167,6 @@ export default function NikkiBeachPage() {
         </section>
       )}
 
-      {/* Amenities Section */}
-      <section className="py-16 bg-charcoal-light">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-              Premium <span className="text-gradient-lime">Amenities</span>
-            </h2>
-          </motion.div>
-
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="flex justify-center gap-4">
-            {amenities.map((amenity, index) => (
-              <motion.span key={amenity} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: index * 0.05 }} className="px-6 py-3 bg-background/50 text-foreground/80 rounded-full border border-primary/20 hover:border-primary/40 hover:text-primary transition-all duration-300">
-                {amenity}
-              </motion.span>
-            ))}
-          </motion.div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-16 md:py-24">

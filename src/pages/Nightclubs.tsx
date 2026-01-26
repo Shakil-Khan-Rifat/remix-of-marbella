@@ -8,13 +8,15 @@ import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
 import HeroCarousel from "@/components/HeroCarousel";
 import heroImg from "@/assets/service-nightclub.png";
-import fitzImg from "@/assets/nightclub-fitz.png";
-import oliviaImg from "@/assets/nightclub-olivia.jpg";
-import pangeaImg from "@/assets/nightclub-pangea.jpg";
-import mirageImg from "@/assets/nightclub-mirage.png";
-import tibuImg from "@/assets/nightclub-tibu.jpg";
+import fitzImg from "@/assets/fitz-hero.jpg";
+import oliviaImg from "@/assets/olivia-hero.jpg";
+import pangeaImg from "@/assets/pangea-hero.jpg";
+import mirageImg from "@/assets/mirage-hero.jpg";
+import tibuImg from "@/assets/tibu-hero.jpg";
+import momentoImg from "@/assets/momento-hero.jpg";
+import newscafeImg from "@/assets/newscafe-hero.jpg";
 
-const heroImages = [heroImg, fitzImg, oliviaImg, pangeaImg, mirageImg, tibuImg];
+const heroImages = [heroImg, fitzImg, oliviaImg, pangeaImg, mirageImg, tibuImg, momentoImg, newscafeImg];
 
 // Scroll to top on page load
 function ScrollToTop() {
@@ -60,6 +62,20 @@ const nightclubs = [
     features: ["Puerto Banús", "Celebrity Hotspot", "Dance Floor"],
     link: "/nightclubs/tibu",
   },
+  {
+    name: "Momento",
+    description: "Iconic nightlife destination blending cutting-edge sound and world-class electronic music",
+    image: momentoImg,
+    features: ["World-Class DJs", "Immersive Production", "Underground Vibes"],
+    link: "/nightclubs/momento",
+  },
+  {
+    name: "News Café",
+    description: "High-energy social hotspot where Puerto Banús comes to life from day into night",
+    image: newscafeImg,
+    features: ["Puerto Banús", "Premium Service", "Day to Night"],
+    link: "/nightclubs/news-cafe",
+  },
 ];
 
 function ClubCard({ club, index }: { club: typeof nightclubs[0]; index: number }) {
@@ -103,7 +119,7 @@ function ClubCard({ club, index }: { club: typeof nightclubs[0]; index: number }
         </div>
 
         <span
-          className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-lime text-primary-foreground font-medium text-sm tracking-wider uppercase rounded-lg transition-all duration-300 group-hover:scale-110 group-hover:brightness-115 group-hover:shadow-[0_0_15px_2px_rgba(163,230,53,0.4)]"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-lime text-primary-foreground font-medium text-sm tracking-wider uppercase rounded-lg transition-all duration-300 group-hover:scale-105"
         >
           Book VIP Access
         </span>
@@ -149,7 +165,7 @@ export default function Nightclubs() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="font-display text-5xl md:text-7xl lg:text-8xl text-foreground"
           >
-            Night <span className="text-gradient-lime">Clubs</span>
+            Night<span className="text-gradient-lime">life</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -161,21 +177,6 @@ export default function Nightclubs() {
           </motion.p>
         </div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.6 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-primary/40 rounded-full flex items-start justify-center p-2"
-          >
-            <div className="w-1.5 h-1.5 bg-primary rounded-full" />
-          </motion.div>
-        </motion.div>
       </section>
 
       {/* Back Link */}
@@ -199,7 +200,7 @@ export default function Nightclubs() {
             className="text-center mb-16"
           >
             <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-              Our <span className="text-gradient-lime">Partner Venues</span>
+              Our <span className="text-gradient-lime">Partner Clubs</span>
             </h2>
             <p className="text-foreground/60 max-w-2xl mx-auto">
               Experience the electric nightlife of Marbella with priority entry 

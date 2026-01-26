@@ -1,14 +1,24 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import aboutBackground from "@/assets/about-background.jpg";
 
 export default function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="py-24 md:py-32 bg-background">
-      <div className="container mx-auto px-6" ref={ref}>
+    <section id="about" className="relative py-24 md:py-32 overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src={aboutBackground}
+          alt="Puerto Banus marina"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-background/90" />
+      </div>
+      <div className="container mx-auto px-6 relative z-10" ref={ref}>
         <div className="max-w-4xl mx-auto text-center">
           <motion.span
             initial={{ opacity: 0, y: 20 }}

@@ -25,7 +25,7 @@ const services = [
     link: "/yacht-charter",
   },
   {
-    title: "Night Clubs",
+    title: "Nightlife",
     description: "Skip the lines with VIP entry to Marbella's hottest venues",
     image: nightclubImg,
     link: "/nightclubs",

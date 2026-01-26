@@ -78,8 +78,7 @@ export default function LifestyleManagement() {
       
       {/* Hero Section */}
       <section ref={heroRef} className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-20">
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent opacity-60" />
+        <div className="absolute inset-0 bg-gradient-overlay" />
         
         <div className="relative z-10 container mx-auto px-4 text-center">
           <motion.div

@@ -5,9 +5,9 @@ import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo-round.png";
 
 const navLinks = [
-  { href: "/#home", label: "Home" },
   { href: "/#services", label: "Services" },
   { href: "/#about", label: "Our Story" },
+  { href: "/vip-x", label: "VIP X" },
   { href: "/#testimonials", label: "Testimonials" },
   { href: "/#faq", label: "FAQ" },
   { href: "/#contact", label: "Contact" },
@@ -62,7 +62,7 @@ export default function Navbar() {
         <ul className="hidden lg:flex items-center gap-10">
           {navLinks.map((link) => (
             <li key={link.href}>
-              {isHomePage ? (
+              {isHomePage && link.href.startsWith("/#") ? (
                 <motion.a
                   href={link.href}
                   className="relative text-sm tracking-widest uppercase text-foreground/80 hover:text-primary transition-colors duration-300 group"
@@ -114,7 +114,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  {isHomePage ? (
+                  {isHomePage && link.href.startsWith("/#") ? (
                     <a
                       href={link.href}
                       className="block text-lg tracking-wider uppercase text-foreground/80 hover:text-primary transition-colors py-2"

@@ -8,13 +8,14 @@ import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
 import HeroCarousel from "@/components/HeroCarousel";
 import heroImg from "@/assets/beach-clubs-hero.png";
-import naoImg from "@/assets/beach-club-nao.jpg";
-import oceanImg from "@/assets/beach-club-ocean.jpg";
-import mogliImg from "@/assets/beach-club-mogli.png";
+import naoHero from "@/assets/nao-hero.jpg";
+import oceanHero from "@/assets/ocean-club-hero.png";
+import mogliHero from "@/assets/mogli-hero.jpg";
 import nikkiImg from "@/assets/beach-club-nikki.png";
-import sublimImg from "@/assets/sublim-new.png";
+import sublimHero from "@/assets/sublim-hero.jpg";
+import playaPadreHero from "@/assets/playa-padre-hero.jpg";
 
-const heroImages = [heroImg, naoImg, oceanImg, mogliImg, nikkiImg, sublimImg];
+const heroImages = [heroImg, oceanHero, mogliHero, nikkiImg, sublimHero, playaPadreHero];
 
 // Scroll to top on page load
 function ScrollToTop() {
@@ -27,21 +28,21 @@ const beachClubs = [
   {
     name: "Naô Pool Club",
     description: "Ultimate destination for luxury poolside partying with premium service",
-    image: naoImg,
+    image: naoHero,
     features: ["VIP Cabanas", "Gourmet Dining", "Premium Cocktails"],
     link: "/beach-clubs/nao",
   },
   {
     name: "Ocean Club",
     description: "Iconic Marbella destination featuring infinity pools and world-class DJs",
-    image: oceanImg,
+    image: oceanHero,
     features: ["Infinity Pool", "Live DJ", "Champagne Service"],
     link: "/beach-clubs/ocean-club",
   },
   {
     name: "Mogli",
     description: "Tropical bohemian paradise with thatched roof ambiance and poolside relaxation",
-    image: mogliImg,
+    image: mogliHero,
     features: ["Tropical Vibes", "Pool Access", "Mediterranean Cuisine"],
     link: "/beach-clubs/mogli",
   },
@@ -55,9 +56,16 @@ const beachClubs = [
   {
     name: "Sublim",
     description: "Elegant stone architecture meets Mediterranean luxury in this stunning venue",
-    image: sublimImg,
+    image: sublimHero,
     features: ["Elegant Design", "Exclusive Access", "Premium Location"],
     link: "/beach-clubs/sublim",
+  },
+  {
+    name: "Playa Padre",
+    description: "Stylish, free-spirited beach club with bohemian vibe and iconic Boho Sundays",
+    image: playaPadreHero,
+    features: ["Boho Sundays", "World-class DJs", "Sunset Sessions"],
+    link: "/beach-clubs/playa-padre",
   },
 ];
 
@@ -103,9 +111,9 @@ function ClubCard({ club, index }: { club: typeof beachClubs[0]; index: number }
           </div>
 
           <span
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-lime text-primary-foreground font-medium text-sm tracking-wider uppercase rounded-lg transition-all duration-300 group-hover:scale-110 group-hover:brightness-115 group-hover:shadow-[0_0_15px_2px_rgba(163,230,53,0.4)]"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-lime text-primary-foreground font-medium text-sm tracking-wider uppercase rounded-lg transition-all duration-300 group-hover:scale-105"
           >
-            Learn More
+            View & Book
           </span>
         </div>
 
@@ -156,21 +164,6 @@ export default function BeachClubs() {
           </motion.p>
         </div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.6 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-primary/40 rounded-full flex items-start justify-center p-2"
-          >
-            <div className="w-1.5 h-1.5 bg-primary rounded-full" />
-          </motion.div>
-        </motion.div>
       </section>
 
       {/* Back Link */}

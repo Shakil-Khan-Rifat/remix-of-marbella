@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import heroImage from "@/assets/hero-marbella-panoramic.png";
+import heroImage from "@/assets/hero-marbella-puerto-banus.jpeg";
 import BookingButtons from "./BookingButtons";
 
 export default function Hero() {
@@ -59,21 +59,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.a
-        href="#about"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-foreground/50 hover:text-primary transition-colors cursor-pointer"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-        >
-          <ChevronDown size={32} />
-        </motion.div>
-      </motion.a>
     </section>
   );
 }

@@ -1,15 +1,14 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Anchor, Users, Ruler, Fuel, UtensilsCrossed, Music, Waves } from "lucide-react";
+import { ArrowLeft, Anchor, Users, Ruler, ChevronLeft, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
 import HeroCarousel from "@/components/HeroCarousel";
-import { Button } from "@/components/ui/button";
-import yachtHeroImg from "@/assets/service-yacht.png";
-import yachtGolden from "@/assets/yacht-golden.png";
+import yachtHeroStatic from "@/assets/yacht-hero-static.jpg";
+import yachtGolden from "@/assets/yacht-golden-new.png";
 import yachtTarela from "@/assets/yacht-tarela.png";
 import yachtSundancer from "@/assets/yacht-sundancer.png";
 import yachtAiconForever from "@/assets/yacht-aicon-forever.png";
@@ -18,8 +17,35 @@ import yachtMrsAmber from "@/assets/yacht-mrs-amber.png";
 import yachtMahiMahi from "@/assets/yacht-mahi-mahi.png";
 import yachtMalex from "@/assets/yacht-malex.png";
 import yachtCranchi from "@/assets/yacht-cranchi.png";
+import malexGallery1 from "@/assets/malex-gallery-1.jpg";
+import malexGallery2 from "@/assets/malex-gallery-2.jpg";
+import malexGallery3 from "@/assets/malex-gallery-3.jpg";
+import malexGallery4 from "@/assets/malex-gallery-4.jpg";
+import foreverGallery1 from "@/assets/forever-gallery-1.jpg";
+import foreverGallery2 from "@/assets/forever-gallery-2.jpg";
+import foreverGallery3 from "@/assets/forever-gallery-3.jpg";
+import foreverGallery4 from "@/assets/forever-gallery-4.jpg";
+import foreverGallery5 from "@/assets/forever-gallery-5.jpg";
+import candelaGallery1 from "@/assets/candela-gallery-1.jpg";
+import candelaGallery2 from "@/assets/candela-gallery-2.jpg";
+import mangustaGallery1 from "@/assets/mangusta-gallery-1.jpg";
+import mangustaGallery2 from "@/assets/mangusta-gallery-2.jpg";
+import mangustaGallery3 from "@/assets/mangusta-gallery-3.jpg";
+import mangustaGallery4 from "@/assets/mangusta-gallery-4.jpg";
+import brisasGallery1 from "@/assets/yacht-brisas-gallery-1.jpg";
+import yachtCoraje1 from "@/assets/yacht-coraje-1.jpg";
+import yachtCoraje2 from "@/assets/yacht-coraje-2.jpg";
+import yachtCoraje3 from "@/assets/yacht-coraje-3.jpg";
+import yachtCoraje4 from "@/assets/yacht-coraje-4.jpg";
+import yachtCoraje5 from "@/assets/yacht-coraje-5.jpg";
+import yachtCoraje6 from "@/assets/yacht-coraje-6.jpg";
+import yachtVibe from "@/assets/yacht-vibe.png";
+import azimut39Gallery1 from "@/assets/yacht-azimut39-gallery-1.jpg";
+import azimut39Gallery2 from "@/assets/yacht-azimut39-gallery-2.jpg";
+import azimut39Gallery3 from "@/assets/yacht-azimut39-gallery-3.jpg";
+import azimut39Gallery4 from "@/assets/yacht-azimut39-gallery-4.jpg";
 
-const heroImages = [yachtHeroImg, yachtGolden, yachtTarela, yachtSundancer, yachtMalex];
+
 
 const yachts = [
   {
@@ -27,86 +53,208 @@ const yachts = [
     length: "11.6m",
     capacity: "11 passengers",
     includes: ["Captain", "Fuel", "Drinks/Snacks"],
-    prices: { "2H": "€550 (inc. VAT)", "4H": "€1,050", "6H": "€1,500" },
-    image: yachtGolden,
+    price: "Starting From €550",
+    images: [yachtGolden],
     featured: true,
-    detailsPdf: "/yachts/golden.pdf",
-  },
-  {
-    name: "TARELA",
-    subtitle: "Azimut 39",
-    capacity: "12 passengers",
-    includes: ["Captain", "Fuel", "2x Champagne bottles", "Snacks"],
-    prices: { "2H": "€600", "3H": "€850", "4H": "€1,100", "6H": "€1,500" },
-    image: yachtTarela,
-    detailsPdf: "/yachts/tarela.pdf",
   },
   {
     name: "SUNDANCER 540",
     length: "16.70m",
     capacity: "11 passengers + crew",
     includes: ["Padel Surf", "Sound System", "Cava & Beers", "Soft Drinks"],
-    prices: { "2H": "€1,000", "4H": "€1,600", "6H": "€2,000", "8H": "€2,400" },
-    image: yachtSundancer,
-    detailsPdf: "/yachts/sundancer.pdf",
+    price: "Starting From €1,000",
+    images: [yachtSundancer],
   },
   {
-    name: "AICON 72 HT - FOREVER",
+    name: "FOREVER",
     length: "22m",
     capacity: "10 passengers",
-    includes: ["Jet Sky", "Sea Scooter", "SUP", "Cocktails & Drinks"],
-    prices: { "4H": "€2,500", "6H": "€3,500", "8H": "€4,800" },
-    image: yachtAiconForever,
+    includes: ["Jet Ski", "Snacks", "Fruit Platter", "Beers", "Cava", "Soft Drinks"],
+    price: "Starting From €2,500",
+    minCharter: "4 hour minimum charter",
+    jetSki: true,
+    images: [foreverGallery1, foreverGallery2, foreverGallery3, foreverGallery4, foreverGallery5],
+    premium: true,
   },
   {
-    name: "CARBON",
-    subtitle: "Sport",
+    name: "CARBON RED",
     length: "11.5m",
     capacity: "10 passengers",
-    includes: ["Captain", "Fuel", "Wine", "Soft Drinks", "Snacks", "Towels", "Snorkels", "Seabob", "Sunshade", "Fusion Sound System"],
-    prices: { "2H": "€1,100", "4H": "€1,800", "8H": "€2,900" },
-    image: yachtLouisCarbon,
-    detailsPdf: "/yachts/carbon.pdf",
+    includes: ["Snacks", "Soft Drinks", "Wine", "Beers", "Sea Bob Water Sports", "Fresh Towels", "Stability Control", "Owner's Cabin with Bathroom"],
+    price: "Starting From €1,000",
+    minCharter: "2 hour minimum charter",
+    images: [yachtLouisCarbon],
   },
   {
     name: "MRS AMBER",
     length: "10m",
     capacity: "9 passengers",
     includes: ["Captain", "Fuel", "Drinks", "Snacks"],
-    prices: { "2H": "€450", "4H": "€700", "6H": "€920", "8H": "€1,450" },
-    image: yachtMrsAmber,
-    detailsPdf: "/yachts/mrs-amber.pdf",
+    price: "Starting From €450",
+    images: [yachtMrsAmber],
   },
   {
     name: "MAHI MAHI",
     length: "12m",
     capacity: "11 passengers",
     includes: ["Captain", "Fuel", "Drinks", "Fishing Equipment"],
-    prices: { "2H": "€550", "4H": "€950", "6H": "€1,200", "8H": "€1,650" },
-    image: yachtMahiMahi,
-    detailsPdf: "/yachts/mahi-mahi.pdf",
+    price: "Starting From €550",
+    images: [yachtMahiMahi],
   },
   {
     name: "MALEX",
-    subtitle: "Maiora 26",
     length: "31m",
     capacity: "12 passengers",
-    includes: ["Captain", "Fuel", "Drinks/Snacks", "Jet Ski"],
-    prices: { "4H": "€6,050 (inc. VAT)", "8H": "€9,680" },
-    image: yachtMalex,
+    capacityHighlight: true,
+    includes: ["Captain", "Fuel", "Cava", "Beers", "Soft Drinks", "Snacks"],
+    price: "Starting From €6,050",
+    minCharter: "4 hour minimum charter",
+    jetSki: true,
+    images: [malexGallery1, malexGallery2, malexGallery3, malexGallery4],
     premium: true,
-    detailsPdf: "/yachts/malex.pdf",
   },
   {
     name: "CRANCHI",
     length: "12m",
     capacity: "9 passengers",
     includes: ["Captain", "Fuel", "Drinks", "Snacks"],
-    prices: { "2H": "€680", "4H": "€980", "8H": "€1,700" },
-    image: yachtCranchi,
-    detailsPdf: "/yachts/cranchi.pdf",
+    price: "Starting From €680",
+    images: [yachtCranchi],
+  },
+  {
+    name: "CANDELA",
+    capacity: "12 passengers",
+    capacityHighlight: true,
+    includes: ["Cava", "Beers", "Wine", "Soft Drinks", "Snacks"],
+    price: "Starting From €2,400",
+    minCharter: "4 hour minimum charter",
+    images: [candelaGallery1, candelaGallery2],
+    premium: true,
+  },
+  {
+    name: "MANGUSTA 80",
+    capacity: "12 passengers",
+    capacityHighlight: true,
+    includes: ["Champagne", "Wine", "Beers", "Sandwiches", "Fruit", "Jet Ski", "Paddle Board", "Donut", "Snorkel Equipment"],
+    price: "Starting From €4,750",
+    minCharter: "4 hour minimum charter",
+    jetSki: true,
+    images: [mangustaGallery1, mangustaGallery2, mangustaGallery3, mangustaGallery4],
+    premium: true,
+  },
+  {
+    name: "BRISAS",
+    capacity: "12 passengers",
+    capacityHighlight: true,
+    includes: ["Snacks", "Wine", "Beer", "Cava", "Paddle Board", "Jet Ski"],
+    price: "Starting From €1,850",
+    minCharter: "4 hour minimum charter",
+    jetSki: true,
+    images: [brisasGallery1],
+    premium: true,
+  },
+  {
+    name: "CORAJE",
+    capacity: "11 passengers",
+    includes: ["Snacks", "Wine", "Beers", "Soft Drinks", "Paddle Board x2"],
+    price: "Starting From €1,000",
+    minCharter: "2 hour minimum charter",
+    images: [yachtCoraje1, yachtCoraje2, yachtCoraje3, yachtCoraje4, yachtCoraje5, yachtCoraje6],
+  },
+  {
+    name: "VIBE",
+    capacity: "12 passengers",
+    capacityHighlight: true,
+    includes: ["Snacks", "Wine", "Beers", "Soft Drinks", "Paddle Board", "Jet Ski"],
+    price: "Starting From €1,850",
+    minCharter: "4 hour minimum charter",
+    jetSki: true,
+    images: [yachtVibe],
+    premium: true,
+  },
+  {
+    name: "AZIMUT 39",
+    capacity: "12 passengers",
+    capacityHighlight: true,
+    includes: ["Snacks", "Wine", "Beer", "Soft Drinks", "Paddle Board"],
+    price: "Starting From €850",
+    minCharter: "2 hour minimum charter",
+    images: [azimut39Gallery1, azimut39Gallery2, azimut39Gallery3, azimut39Gallery4],
   },
 ];
+
+function YachtImageCarousel({ images, name }: { images: string[]; name: string }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const prevImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  if (images.length === 1) {
+    return (
+      <img
+        src={images[0]}
+        alt={name}
+        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+      />
+    );
+  }
+
+  return (
+    <div className="relative w-full h-full">
+      {/* Preload all images and show/hide based on current index */}
+      {images.map((img, idx) => (
+        <img
+          key={idx}
+          src={img}
+          alt={`${name} - Image ${idx + 1}`}
+          className={`absolute inset-0 w-full h-full object-cover ${
+            idx === currentIndex ? "opacity-100 z-[1]" : "opacity-0 z-0"
+          }`}
+        />
+      ))}
+      
+      {/* Navigation Arrows */}
+      <button
+        onClick={prevImage}
+        className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-background/80 backdrop-blur-sm rounded-full flex items-center justify-center text-foreground hover:bg-background transition-colors z-10"
+        aria-label="Previous image"
+      >
+        <ChevronLeft className="w-5 h-5" />
+      </button>
+      <button
+        onClick={nextImage}
+        className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-background/80 backdrop-blur-sm rounded-full flex items-center justify-center text-foreground hover:bg-background transition-colors z-10"
+        aria-label="Next image"
+      >
+        <ChevronRight className="w-5 h-5" />
+      </button>
+      
+      {/* Dots Indicator */}
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+        {images.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={(e) => {
+              e.stopPropagation();
+              setCurrentIndex(idx);
+            }}
+            className={`w-2 h-2 rounded-full transition-all ${
+              idx === currentIndex ? "bg-primary w-4" : "bg-foreground/50"
+            }`}
+            aria-label={`Go to image ${idx + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function YachtCard({ yacht, index }: { yacht: typeof yachts[0]; index: number }) {
   const ref = useRef(null);
@@ -126,24 +274,9 @@ function YachtCard({ yacht, index }: { yacht: typeof yachts[0]; index: number })
           : "border-primary/10 hover:border-primary/30"
       }`}
     >
-      {yacht.premium && (
-        <div className="absolute top-4 left-4 z-10 px-3 py-1 bg-gradient-lime text-primary-foreground text-xs font-bold uppercase tracking-wider rounded-full">
-          Premium
-        </div>
-      )}
-      {yacht.featured && !yacht.premium && (
-        <div className="absolute top-4 left-4 z-10 px-3 py-1 bg-primary/20 text-primary text-xs font-bold uppercase tracking-wider rounded-full border border-primary/30">
-          Featured
-        </div>
-      )}
       
       <div className="relative aspect-[16/10] overflow-hidden rounded-t-2xl">
-        <img
-          src={yacht.image}
-          alt={yacht.name}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-          loading="lazy"
-        />
+        <YachtImageCarousel images={yacht.images} name={yacht.name} />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-70" />
       </div>
       
@@ -153,9 +286,6 @@ function YachtCard({ yacht, index }: { yacht: typeof yachts[0]; index: number })
             <h3 className="font-display text-2xl md:text-3xl text-foreground group-hover:text-primary transition-colors duration-300">
               {yacht.name}
             </h3>
-            {yacht.subtitle && (
-              <span className="text-primary/70 text-sm">{yacht.subtitle}</span>
-            )}
           </div>
           <Anchor className="w-6 h-6 text-primary/50 group-hover:text-primary transition-colors" />
         </div>
@@ -167,11 +297,27 @@ function YachtCard({ yacht, index }: { yacht: typeof yachts[0]; index: number })
               <span>{yacht.length}</span>
             </div>
           )}
-          <div className="flex items-center gap-1.5">
-            <Users className="w-4 h-4 text-primary/70" />
+          <div className={`flex items-center gap-1.5 ${yacht.capacityHighlight ? "text-primary font-semibold" : ""}`}>
+            <Users className={`w-4 h-4 ${yacht.capacityHighlight ? "text-primary" : "text-primary/70"}`} />
             <span>{yacht.capacity}</span>
           </div>
         </div>
+
+        {/* Special highlights for MALEX */}
+        {(yacht.minCharter || yacht.jetSki) && (
+          <div className="flex flex-wrap gap-2 mb-4">
+            {yacht.minCharter && (
+              <span className="px-3 py-1 bg-primary/20 text-primary text-xs font-semibold rounded-full border border-primary/30">
+                ⏱️ {yacht.minCharter}
+              </span>
+            )}
+            {yacht.jetSki && (
+              <span className="px-3 py-1 bg-primary/20 text-primary text-xs font-semibold rounded-full border border-primary/30">
+                🚤 Jet Ski Included
+              </span>
+            )}
+          </div>
+        )}
 
         <div className="flex flex-wrap gap-1.5 mb-5">
           {yacht.includes.slice(0, 4).map((item) => (
@@ -185,25 +331,11 @@ function YachtCard({ yacht, index }: { yacht: typeof yachts[0]; index: number })
         </div>
 
         <div className="border-t border-primary/10 pt-4 flex-grow">
-          <span className="text-xs text-foreground/50 uppercase tracking-wider">Starting from</span>
-          <div className="flex flex-wrap gap-3 mt-2">
-            {Object.entries(yacht.prices).map(([duration, price]) => (
-              <div key={duration} className="text-center">
-                <div className="text-primary font-semibold">{price}</div>
-                <div className="text-foreground/40 text-xs">{duration}</div>
-              </div>
-            ))}
-          </div>
+          <div className="text-primary font-semibold text-xl">{yacht.price}</div>
+          <p className="text-foreground/50 text-xs mt-1">All prices include captain, fuel, docking fees, cava, beers, soft drinks and snacks</p>
         </div>
 
-        <div className="mt-5 pt-4 border-t border-primary/10 space-y-3">
-          <Button 
-            variant="outline" 
-            className="w-full border-primary/30 text-primary hover:bg-primary/10 hover:border-primary"
-            onClick={() => window.open(yacht.detailsPdf || '/yachts/default.pdf', '_blank')}
-          >
-            See Details
-          </Button>
+        <div className="mt-5 pt-4 border-t border-primary/10">
           <BookingButtons variant="compact" className="w-full" />
         </div>
       </div>
@@ -223,7 +355,11 @@ export default function YachtCharter() {
       <Navbar />
 
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
-        <HeroCarousel images={heroImages} alt="Luxury Yacht Charter" />
+        <img 
+          src={yachtHeroStatic} 
+          alt="Luxury Yacht Charter" 
+          className="absolute inset-0 w-full h-full object-cover"
+        />
 
         <div ref={heroRef} className="container mx-auto px-6 relative z-10 text-center pt-24">
           <motion.div
@@ -270,8 +406,6 @@ export default function YachtCharter() {
 
         </div>
 
-        {/* Animated wave decoration */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
       </section>
 
       {/* Yachts Grid */}
@@ -297,14 +431,6 @@ export default function YachtCharter() {
             ))}
           </div>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center text-foreground/50 text-sm mt-12"
-          >
-            * All charter prices are indicative. VAT extra unless specified. Docking fees included.
-          </motion.p>
         </div>
       </section>
 

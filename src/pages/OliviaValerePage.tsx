@@ -1,14 +1,17 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ChevronLeft, ChevronRight, MapPin, Clock, Music, Star } from "lucide-react";
+import { ArrowLeft, MapPin, Clock, Music, Star } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
-import oliviaImg from "@/assets/nightclub-olivia.jpg";
+import VenueGalleryCarousel from "@/components/VenueGalleryCarousel";
+import oliviaHero from "@/assets/olivia-hero.jpg";
 import oliviaFloorPlan from "@/assets/olivia-floor-plan.png";
-import oliviaInterior1 from "@/assets/olivia-interior-1.png";
-import oliviaInterior2 from "@/assets/olivia-interior-2.jpg";
+import oliviaGallery1 from "@/assets/olivia-gallery-1.jpg";
+import oliviaGallery2 from "@/assets/olivia-gallery-2.jpg";
+import oliviaGallery3 from "@/assets/olivia-gallery-3.jpg";
+import oliviaGallery4 from "@/assets/olivia-gallery-4.jpg";
 
 function ScrollToTop() {
   useEffect(() => {
@@ -18,16 +21,16 @@ function ScrollToTop() {
 }
 
 const galleryImages = [
-  { src: oliviaImg, alt: "Olivia Valere Main Hall" },
-  { src: oliviaInterior1, alt: "Olivia Valere VIP Lounge" },
-  { src: oliviaInterior2, alt: "Olivia Valere Dance Floor" },
+  { src: oliviaGallery1, alt: "Olivia Valere Main Hall Party" },
+  { src: oliviaGallery2, alt: "Olivia Valere Light Show" },
+  { src: oliviaGallery3, alt: "Olivia Valere Interior Lounge" },
+  { src: oliviaGallery4, alt: "Olivia Valere Dance Floor" },
 ];
 
 const features = [
-  { icon: "🏛️", title: "Legendary Venue", description: "Marbella's most iconic nightclub since 1987" },
-  { icon: "🎧", title: "International DJs", description: "World-renowned DJs and live entertainment" },
-  { icon: "🍾", title: "Champagne Service", description: "Premium bottle service with VIP treatment" },
-  { icon: "🌟", title: "Celebrity Hotspot", description: "Where the elite come to celebrate" },
+  { icon: "🎭", title: "Epic Nightlife Complex with Dining + Clubbing", description: "A full night experience with restaurant, terrace, and main dancefloor" },
+  { icon: "🏛️", title: "Iconic Moorish-Inspired Design & Atmosphere", description: "Unique architecture and décor that elevate the party vibe" },
+  { icon: "🌍", title: "Cosmopolitan Crowd & Special Events", description: "A magnet for international guests, DJs, shows, and themed nights" },
 ];
 
 const vipAreas = [
@@ -38,49 +41,16 @@ const vipAreas = [
 ];
 
 export default function OliviaValerePage() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % galleryImages.length);
-  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
-
-  useEffect(() => {
-    const interval = setInterval(nextSlide, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <main className="min-h-screen bg-background">
       <ScrollToTop />
       <Navbar />
 
-      {/* Hero Image Carousel */}
+      {/* Hero Section - Single Image */}
       <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
         <div className="absolute inset-0">
-          {galleryImages.map((image, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: index === currentSlide ? 1 : 0 }}
-              transition={{ duration: 0.7 }}
-              className="absolute inset-0"
-            >
-              <img src={image.src} alt={image.alt} className="w-full h-full object-cover" />
-            </motion.div>
-          ))}
-          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background" />
-        </div>
-
-        <button onClick={prevSlide} className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-background/30 backdrop-blur-sm rounded-full border border-primary/20 hover:bg-background/50 transition-all duration-300">
-          <ChevronLeft className="w-6 h-6 text-foreground" />
-        </button>
-        <button onClick={nextSlide} className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-background/30 backdrop-blur-sm rounded-full border border-primary/20 hover:bg-background/50 transition-all duration-300">
-          <ChevronRight className="w-6 h-6 text-foreground" />
-        </button>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-          {galleryImages.map((_, index) => (
-            <button key={index} onClick={() => setCurrentSlide(index)} className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentSlide ? "w-8 bg-primary" : "bg-foreground/40"}`} />
-          ))}
+          <img src={oliviaHero} alt="Olivia Valere" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-overlay" />
         </div>
 
         <div className="absolute bottom-20 left-0 right-0 z-10 text-center">
@@ -101,20 +71,17 @@ export default function OliviaValerePage() {
         </Link>
       </section>
 
-      {/* About Section */}
+      {/* About Section with Gallery */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
               <span className="text-primary tracking-[0.4em] uppercase text-sm block mb-4">About The Venue</span>
               <h2 className="font-display text-4xl md:text-5xl text-foreground mb-6">
-                Legendary <span className="text-gradient-lime">Marbella Icon</span>
+                Upscale <span className="text-gradient-lime">Nightlife Destination</span>
               </h2>
-              <p className="text-foreground/60 text-lg leading-relaxed mb-6">
-                Olivia Valere is Marbella's most legendary nightclub, a glamorous institution that has been at the heart of the Costa del Sol's nightlife since 1987. Set in stunning Andalusian architecture with Moorish influences.
-              </p>
-              <p className="text-foreground/60 leading-relaxed mb-8">
-                The venue features multiple dance floors, outdoor terraces, and exclusive VIP areas. It's where international celebrities, jet-setters, and discerning party-goers come to experience unforgettable nights under the stars.
+              <p className="text-foreground/60 text-lg leading-relaxed mb-8">
+                Olivia Valere Marbella is one of the most iconic and upscale nightlife destinations on the Costa del Sol, combining dining, shows, and late-night clubbing in a sophisticated setting. The venue includes restaurant, lounge, and nightclub spaces and attracts an international, stylish crowd.
               </p>
 
               <div className="grid grid-cols-2 gap-4">
@@ -137,11 +104,7 @@ export default function OliviaValerePage() {
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="relative">
-              <img src={oliviaImg} alt="Olivia Valere" className="w-full h-[500px] object-cover rounded-2xl" />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-background/40 to-transparent" />
-              <div className="absolute -top-4 -right-4 w-full h-full border-2 border-primary/30 rounded-2xl -z-10" />
-            </motion.div>
+            <VenueGalleryCarousel images={galleryImages} />
           </div>
         </div>
       </section>
@@ -155,7 +118,7 @@ export default function OliviaValerePage() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <motion.div key={feature.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }} className="text-center p-6 bg-background/50 rounded-xl border border-primary/10 hover:border-primary/30 transition-colors duration-300">
                 <span className="text-4xl mb-4 block">{feature.icon}</span>

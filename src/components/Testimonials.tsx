@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 const testimonials = [
@@ -32,6 +32,7 @@ const testimonials = [
 
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -42,6 +43,15 @@ export default function Testimonials() {
   const prevTestimonial = () => {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
+
+  // Auto-scroll every 5 seconds
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      nextTestimonial();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [isPaused, currentIndex]);
 
   return (
     <section id="testimonials" className="py-24 md:py-32 bg-background">
@@ -72,9 +82,12 @@ export default function Testimonials() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="max-w-4xl mx-auto"
         >
-          <div className="relative glass-card rounded-2xl p-8 md:p-12">
+          <div 
+            className="relative glass-card rounded-2xl p-8 md:p-12"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
             <Quote className="absolute top-6 left-6 w-12 h-12 text-primary/20" />
-            
             <motion.div
               key={currentIndex}
               initial={{ opacity: 0, x: 20 }}
