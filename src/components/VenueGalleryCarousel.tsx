@@ -13,10 +13,6 @@ export default function VenueGalleryCarousel({ images, className = "" }: VenueGa
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % images.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + images.length) % images.length);
 
-  useEffect(() => {
-    const interval = setInterval(nextSlide, 5000);
-    return () => clearInterval(interval);
-  }, [images.length]);
 
   if (images.length === 0) return null;
 

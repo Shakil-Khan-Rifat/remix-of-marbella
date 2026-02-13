@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "@/assets/logo-round.png";
+import logo from "@/assets/logo-hd.png";
 
 const navLinks = [
   { href: "/#services", label: "Services" },
   { href: "/#about", label: "Our Story" },
-  { href: "/vip-x", label: "VIP X" },
+  { href: "/vip-x", label: "VIP Packages" },
   { href: "/#testimonials", label: "Testimonials" },
   { href: "/#faq", label: "FAQ" },
   { href: "/#contact", label: "Contact" },
@@ -54,7 +54,7 @@ export default function Navbar() {
       <div className="container mx-auto px-6 flex items-center justify-between">
         <motion.div whileHover={{ scale: 1.02 }}>
           <Link to="/">
-            <img src={logo} alt="Amor VIP Concierge" className="h-12 md:h-14" />
+            <img src={logo} alt="Amor VIP Concierge" className="h-12 md:h-14 w-12 md:w-14 rounded-full object-cover" />
           </Link>
         </motion.div>
 

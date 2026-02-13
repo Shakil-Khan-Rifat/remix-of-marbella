@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
 import HeroCarousel from "@/components/HeroCarousel";
+import TestimonialsSlider from "@/components/TestimonialsSlider";
 import yachtHeroStatic from "@/assets/yacht-hero-static.jpg";
 import yachtGolden from "@/assets/yacht-golden-new.png";
 import yachtTarela from "@/assets/yacht-tarela.png";
@@ -49,59 +50,6 @@ import azimut39Gallery4 from "@/assets/yacht-azimut39-gallery-4.jpg";
 
 const yachts = [
   {
-    name: "GOLDEN",
-    length: "11.6m",
-    capacity: "11 passengers",
-    includes: ["Captain", "Fuel", "Drinks/Snacks"],
-    price: "Starting From €550",
-    images: [yachtGolden],
-    featured: true,
-  },
-  {
-    name: "SUNDANCER 540",
-    length: "16.70m",
-    capacity: "11 passengers + crew",
-    includes: ["Padel Surf", "Sound System", "Cava & Beers", "Soft Drinks"],
-    price: "Starting From €1,000",
-    images: [yachtSundancer],
-  },
-  {
-    name: "FOREVER",
-    length: "22m",
-    capacity: "10 passengers",
-    includes: ["Jet Ski", "Snacks", "Fruit Platter", "Beers", "Cava", "Soft Drinks"],
-    price: "Starting From €2,500",
-    minCharter: "4 hour minimum charter",
-    jetSki: true,
-    images: [foreverGallery1, foreverGallery2, foreverGallery3, foreverGallery4, foreverGallery5],
-    premium: true,
-  },
-  {
-    name: "CARBON RED",
-    length: "11.5m",
-    capacity: "10 passengers",
-    includes: ["Snacks", "Soft Drinks", "Wine", "Beers", "Sea Bob Water Sports", "Fresh Towels", "Stability Control", "Owner's Cabin with Bathroom"],
-    price: "Starting From €1,000",
-    minCharter: "2 hour minimum charter",
-    images: [yachtLouisCarbon],
-  },
-  {
-    name: "MRS AMBER",
-    length: "10m",
-    capacity: "9 passengers",
-    includes: ["Captain", "Fuel", "Drinks", "Snacks"],
-    price: "Starting From €450",
-    images: [yachtMrsAmber],
-  },
-  {
-    name: "MAHI MAHI",
-    length: "12m",
-    capacity: "11 passengers",
-    includes: ["Captain", "Fuel", "Drinks", "Fishing Equipment"],
-    price: "Starting From €550",
-    images: [yachtMahiMahi],
-  },
-  {
     name: "MALEX",
     length: "31m",
     capacity: "12 passengers",
@@ -111,24 +59,6 @@ const yachts = [
     minCharter: "4 hour minimum charter",
     jetSki: true,
     images: [malexGallery1, malexGallery2, malexGallery3, malexGallery4],
-    premium: true,
-  },
-  {
-    name: "CRANCHI",
-    length: "12m",
-    capacity: "9 passengers",
-    includes: ["Captain", "Fuel", "Drinks", "Snacks"],
-    price: "Starting From €680",
-    images: [yachtCranchi],
-  },
-  {
-    name: "CANDELA",
-    capacity: "12 passengers",
-    capacityHighlight: true,
-    includes: ["Cava", "Beers", "Wine", "Soft Drinks", "Snacks"],
-    price: "Starting From €2,400",
-    minCharter: "4 hour minimum charter",
-    images: [candelaGallery1, candelaGallery2],
     premium: true,
   },
   {
@@ -143,6 +73,27 @@ const yachts = [
     premium: true,
   },
   {
+    name: "FOREVER",
+    length: "22m",
+    capacity: "10 passengers",
+    includes: ["Jet Ski", "Snacks", "Fruit Platter", "Beers", "Cava", "Soft Drinks"],
+    price: "Starting From €2,500",
+    minCharter: "4 hour minimum charter",
+    jetSki: true,
+    images: [foreverGallery1, foreverGallery2, foreverGallery3, foreverGallery4, foreverGallery5],
+    premium: true,
+  },
+  {
+    name: "CANDELA",
+    capacity: "12 passengers",
+    capacityHighlight: true,
+    includes: ["Cava", "Beers", "Wine", "Soft Drinks", "Snacks"],
+    price: "Starting From €2,400",
+    minCharter: "4 hour minimum charter",
+    images: [candelaGallery1, candelaGallery2],
+    premium: true,
+  },
+  {
     name: "BRISAS",
     capacity: "12 passengers",
     capacityHighlight: true,
@@ -152,14 +103,6 @@ const yachts = [
     jetSki: true,
     images: [brisasGallery1],
     premium: true,
-  },
-  {
-    name: "CORAJE",
-    capacity: "11 passengers",
-    includes: ["Snacks", "Wine", "Beers", "Soft Drinks", "Paddle Board x2"],
-    price: "Starting From €1,000",
-    minCharter: "2 hour minimum charter",
-    images: [yachtCoraje1, yachtCoraje2, yachtCoraje3, yachtCoraje4, yachtCoraje5, yachtCoraje6],
   },
   {
     name: "VIBE",
@@ -173,6 +116,23 @@ const yachts = [
     premium: true,
   },
   {
+    name: "CARBON RED",
+    length: "11.5m",
+    capacity: "10 passengers",
+    includes: ["Snacks", "Soft Drinks", "Wine", "Beers", "Sea Bob Water Sports", "Fresh Towels", "Stability Control", "Owner's Cabin with Bathroom"],
+    price: "Starting From €1,000",
+    minCharter: "2 hour minimum charter",
+    images: [yachtLouisCarbon],
+  },
+  {
+    name: "CORAJE",
+    capacity: "11 passengers",
+    includes: ["Snacks", "Wine", "Beers", "Soft Drinks", "Paddle Board x2"],
+    price: "Starting From €1,000",
+    minCharter: "2 hour minimum charter",
+    images: [yachtCoraje1, yachtCoraje2, yachtCoraje3, yachtCoraje4, yachtCoraje5, yachtCoraje6],
+  },
+  {
     name: "AZIMUT 39",
     capacity: "12 passengers",
     capacityHighlight: true,
@@ -180,6 +140,31 @@ const yachts = [
     price: "Starting From €850",
     minCharter: "2 hour minimum charter",
     images: [azimut39Gallery1, azimut39Gallery2, azimut39Gallery3, azimut39Gallery4],
+  },
+  {
+    name: "CRANCHI",
+    length: "12m",
+    capacity: "9 passengers",
+    includes: ["Captain", "Fuel", "Drinks", "Snacks"],
+    price: "Starting From €680",
+    images: [yachtCranchi],
+  },
+  {
+    name: "GOLDEN",
+    length: "11.6m",
+    capacity: "11 passengers",
+    includes: ["Captain", "Fuel", "Drinks/Snacks"],
+    price: "Starting From €550",
+    images: [yachtGolden],
+    featured: true,
+  },
+  {
+    name: "MAHI MAHI",
+    length: "12m",
+    capacity: "11 passengers",
+    includes: ["Captain", "Fuel", "Drinks", "Fishing Equipment"],
+    price: "Starting From €550",
+    images: [yachtMahiMahi],
   },
 ];
 
@@ -201,7 +186,7 @@ function YachtImageCarousel({ images, name }: { images: string[]; name: string }
       <img
         src={images[0]}
         alt={name}
-        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        className="w-full h-full object-cover"
       />
     );
   }
@@ -276,8 +261,10 @@ function YachtCard({ yacht, index }: { yacht: typeof yachts[0]; index: number })
     >
       
       <div className="relative aspect-[16/10] overflow-hidden rounded-t-2xl">
-        <YachtImageCarousel images={yacht.images} name={yacht.name} />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-70" />
+        <div className="w-full h-full transition-transform duration-700 group-hover:scale-105">
+          <YachtImageCarousel images={yacht.images} name={yacht.name} />
+        </div>
+        <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-primary/30 group-hover:border-primary transition-colors duration-300 z-[2]" />
       </div>
       
       <div className="p-6 flex flex-col flex-grow">
@@ -340,8 +327,6 @@ function YachtCard({ yacht, index }: { yacht: typeof yachts[0]; index: number })
         </div>
       </div>
 
-      {/* Decorative corner accent */}
-      <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-primary/30 group-hover:border-primary transition-colors duration-300" />
     </motion.div>
   );
 }
@@ -356,10 +341,11 @@ export default function YachtCharter() {
 
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
         <img 
-          src={yachtHeroStatic} 
+          src={malexGallery1} 
           alt="Luxury Yacht Charter" 
           className="absolute inset-0 w-full h-full object-cover"
         />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/90" />
 
         <div ref={heroRef} className="container mx-auto px-6 relative z-10 text-center pt-24">
           <motion.div
@@ -380,7 +366,7 @@ export default function YachtCharter() {
             initial={{ opacity: 0, y: 20 }}
             animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="inline-block text-primary tracking-[0.4em] uppercase text-sm mb-4"
+            className="inline-block text-primary tracking-[0.4em] uppercase text-sm mb-4 drop-shadow-lg"
           >
             Luxury Fleet
           </motion.span>
@@ -389,7 +375,7 @@ export default function YachtCharter() {
             initial={{ opacity: 0, y: 30 }}
             animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-display text-5xl md:text-7xl lg:text-8xl mb-6"
+            className="font-display text-5xl md:text-7xl lg:text-8xl mb-6 drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
           >
             Yacht <span className="text-gradient-lime">Charter</span>
           </motion.h1>
@@ -398,7 +384,7 @@ export default function YachtCharter() {
             initial={{ opacity: 0, y: 20 }}
             animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-foreground/70 text-lg md:text-xl max-w-2xl mx-auto mb-8"
+            className="text-foreground/80 text-lg md:text-xl max-w-2xl mx-auto mb-8 drop-shadow-lg"
           >
             Experience the Mediterranean in ultimate luxury. Choose from our exclusive 
             fleet of yachts for an unforgettable journey along the Costa del Sol.
@@ -454,6 +440,8 @@ export default function YachtCharter() {
           </motion.div>
         </div>
       </section>
+
+      <TestimonialsSlider />
 
       <Footer />
     </div>

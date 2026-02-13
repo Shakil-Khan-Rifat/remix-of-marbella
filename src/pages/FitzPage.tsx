@@ -33,22 +33,6 @@ const features = [
   { icon: "🌙", title: "Peak Late-Night Energy", description: "Consistently buzzing until close" },
 ];
 
-const priceList = [
-  { name: "Orange 1st Floor", capacity: "Up to 5", price: "€500" },
-  { name: "Green 1st Floor", capacity: "Up to 5", price: "€700" },
-  { name: "Blue 1st Floor", capacity: "Up to 5", price: "€1000" },
-  { name: "Dark Blue 1st Floor", capacity: "Up to 5", price: "€2000" },
-  { name: "Green 1st Floor", capacity: "Up to 10", price: "€2500" },
-  { name: "Red 1st Floor", capacity: "Up to 5", price: "€3000" },
-  { name: "Gold 1st Floor", capacity: "Up to 7", price: "€5000" },
-  { name: "Pink 2nd Floor", capacity: "Up to 5", price: "€300" },
-  { name: "Dark Green 2nd Floor", capacity: "Up to 5", price: "€750" },
-  { name: "Yellow 2nd Floor", capacity: "Up to 5", price: "€1000" },
-  { name: "Box 1 2nd Floor", capacity: "Up to 7", price: "€2000" },
-  { name: "Box 2 2nd Floor", capacity: "Up to 7", price: "€2000" },
-  { name: "Purple 2nd Floor", capacity: "Up to 5", price: "€5000" },
-  { name: "Red Balcony 2nd Floor", capacity: "Up to 15", price: "€5000" },
-];
 
 export default function FitzPage() {
   return (
@@ -140,50 +124,6 @@ export default function FitzPage() {
         </div>
       </section>
 
-      {/* VIP Table Pricing */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-              VIP Table <span className="text-gradient-lime">Reservations</span>
-            </h2>
-            <p className="text-foreground/60 max-w-2xl mx-auto">
-              Reserve your VIP table and experience FITZ in style. Prices include bottle service minimum.
-            </p>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0 }} 
-            whileInView={{ opacity: 1 }} 
-            viewport={{ once: true }}
-            className="max-w-4xl mx-auto bg-charcoal-light rounded-2xl border border-primary/10 overflow-hidden"
-          >
-            <div className="grid grid-cols-3 gap-4 p-4 bg-background/30 border-b border-primary/10">
-              <span className="text-foreground font-medium text-sm uppercase tracking-wider">Table</span>
-              <span className="text-foreground font-medium text-sm uppercase tracking-wider text-center">Capacity</span>
-              <span className="text-foreground font-medium text-sm uppercase tracking-wider text-right">Price</span>
-            </div>
-            <div className="divide-y divide-primary/5">
-              {priceList.map((item, index) => (
-                <motion.div 
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.03 }}
-                  className="grid grid-cols-3 gap-4 p-4 hover:bg-background/20 transition-colors duration-300"
-                >
-                  <span className="text-foreground/80 text-sm">{item.name}</span>
-                  <span className="text-foreground/60 text-sm text-center">{item.capacity}</span>
-                  <span className="text-primary font-medium text-sm text-right">{item.price}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Floor Plan Section */}
       <section className="py-16 md:py-24 bg-charcoal-light">
         <div className="container mx-auto px-6">
           <motion.div 

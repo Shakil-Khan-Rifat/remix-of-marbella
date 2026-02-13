@@ -33,12 +33,6 @@ const features = [
   { icon: "🌍", title: "Cosmopolitan Crowd & Special Events", description: "A magnet for international guests, DJs, shows, and themed nights" },
 ];
 
-const vipAreas = [
-  { name: "Backstage VIP", description: "Exclusive area behind the DJ booth", price: "From €2,000" },
-  { name: "Main Floor Tables", description: "Premium positioning on the dance floor", price: "From €1,000" },
-  { name: "Bar Area Tables", description: "Perfect view of the entire venue", price: "From €800" },
-  { name: "VIP Entrance Area", description: "Prestigious front-of-house tables", price: "From €1,500" },
-];
 
 export default function OliviaValerePage() {
   return (
@@ -130,38 +124,6 @@ export default function OliviaValerePage() {
         </div>
       </section>
 
-      {/* VIP Areas */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-              VIP <span className="text-gradient-lime">Areas</span>
-            </h2>
-            <p className="text-foreground/60 max-w-2xl mx-auto">
-              Choose from our exclusive VIP areas and experience Olivia Valere in ultimate style.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {vipAreas.map((area, index) => (
-              <motion.div 
-                key={area.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="p-6 bg-charcoal-light rounded-2xl border border-primary/10 hover:border-primary/30 transition-all duration-300"
-              >
-                <h3 className="font-display text-xl text-foreground mb-2">{area.name}</h3>
-                <p className="text-foreground/60 text-sm mb-4">{area.description}</p>
-                <span className="text-primary font-medium">{area.price}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Floor Plan Section */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-6">
           <motion.div 

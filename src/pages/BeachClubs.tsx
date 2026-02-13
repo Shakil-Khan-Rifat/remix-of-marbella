@@ -6,6 +6,7 @@ import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
+import TestimonialsSlider from "@/components/TestimonialsSlider";
 import HeroCarousel from "@/components/HeroCarousel";
 import heroImg from "@/assets/beach-clubs-hero.png";
 import naoHero from "@/assets/nao-hero.jpg";
@@ -220,6 +221,8 @@ export default function BeachClubs() {
           </motion.div>
         </div>
       </section>
+
+      <TestimonialsSlider />
 
       <Footer />
     </main>

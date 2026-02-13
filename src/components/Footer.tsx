@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
-import logo from "@/assets/logo-round.png";
+import logo from "@/assets/logo-hd.png";
 
 const quickLinks = [
   { label: "Services", href: "/#services" },
@@ -16,17 +16,17 @@ export default function Footer() {
     <footer className="bg-charcoal border-t border-border/30 py-16">
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-3 gap-12 mb-12">
-          {/* Brand */}
+          {/* Brand - Left */}
           <div>
-            <img src={logo} alt="Amor VIP Concierge" className="h-14 mb-4" />
+            <img src={logo} alt="Amor VIP Concierge" className="h-14 w-14 rounded-full object-cover mb-4" />
             <p className="text-foreground/50 text-sm leading-relaxed">
               Your luxury concierge service in Marbella, Spain. 
               Creating unforgettable experiences since 2023.
             </p>
           </div>
 
-          {/* Quick Links */}
-          <div>
+          {/* Quick Links - Middle */}
+          <div className="text-center">
             <h4 className="text-foreground font-medium mb-4 tracking-wider uppercase text-sm">
               Quick Links
             </h4>
@@ -44,12 +44,12 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact Us */}
-          <div>
+          {/* Contact Us - Right */}
+          <div className="text-right">
             <h4 className="text-foreground font-medium mb-4 tracking-wider uppercase text-sm">
               Contact Us
             </h4>
-            <div className="flex gap-4 mb-6">
+            <div className="flex gap-4 mb-6 justify-end">
               <a
                 href="https://wa.me/+34600250154"
                 target="_blank"

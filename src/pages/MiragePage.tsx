@@ -33,12 +33,6 @@ const features = [
   { icon: "✨", title: "Stylish, Energetic Crowd", description: "International, fashionable, and always ready to dance" },
 ];
 
-const vipAreas = [
-  { name: "DJ Area Tables", description: "Front row experience by the DJ booth", capacity: "Up to 8 guests" },
-  { name: "Main Floor Tables", description: "Center of the action on the dance floor", capacity: "Up to 6 guests" },
-  { name: "Jacuzzi Room", description: "Exclusive private area with jacuzzi", capacity: "Up to 10 guests" },
-  { name: "Dark Room", description: "Intimate VIP experience", capacity: "Up to 6 guests" },
-];
 
 export default function MiragePage() {
   return (
@@ -130,38 +124,6 @@ export default function MiragePage() {
         </div>
       </section>
 
-      {/* VIP Areas */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-              VIP <span className="text-gradient-lime">Experiences</span>
-            </h2>
-            <p className="text-foreground/60 max-w-2xl mx-auto">
-              Choose from our exclusive VIP areas for an unforgettable night at Mirage.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {vipAreas.map((area, index) => (
-              <motion.div 
-                key={area.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="p-6 bg-charcoal-light rounded-2xl border border-primary/10 hover:border-primary/30 transition-all duration-300"
-              >
-                <h3 className="font-display text-xl text-foreground mb-2">{area.name}</h3>
-                <p className="text-foreground/60 text-sm mb-3">{area.description}</p>
-                <span className="text-primary text-sm">{area.capacity}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Floor Plan Section */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-6">
           <motion.div 

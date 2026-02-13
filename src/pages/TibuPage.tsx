@@ -41,13 +41,6 @@ const venueInfo = {
   openingTimes: "12:00 AM - 7:00 AM",
 };
 
-const tableAreas = [
-  { name: "Open Terrace", tables: "Tables 6-11", description: "Premium outdoor seating with stunning views" },
-  { name: "Lounge Terrace", tables: "Tables 21-25", description: "Comfortable lounge seating area" },
-  { name: "VIP Section", tables: "Tables 21-26", description: "Exclusive VIP experience" },
-  { name: "Dance Floor", tables: "Tables 1-5, 12-20", description: "Center of the action" },
-  { name: "Belvedere VIP", tables: "Tables 1-9", description: "Ultimate VIP experience with panoramic views" },
-];
 
 export default function TibuPage() {
   return (
@@ -190,35 +183,6 @@ export default function TibuPage() {
         </div>
       </section>
 
-      {/* Table Areas */}
-      <section className="py-16 bg-charcoal-light">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-              VIP Table <span className="text-gradient-lime">Areas</span>
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {tableAreas.map((area, index) => (
-              <motion.div 
-                key={area.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="p-6 bg-background/50 rounded-xl border border-primary/10 hover:border-primary/30 transition-all duration-300"
-              >
-                <h3 className="font-display text-lg text-foreground mb-1">{area.name}</h3>
-                <p className="text-primary text-xs mb-2">{area.tables}</p>
-                <p className="text-foreground/60 text-sm">{area.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Floor Plan Section */}
       <section className="py-16 md:py-24 bg-charcoal-light">
         <div className="container mx-auto px-6">
           <motion.div 

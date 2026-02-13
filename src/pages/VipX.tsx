@@ -117,7 +117,7 @@ ${formData.message}`;
             transition={{ duration: 0.8 }}
             className="text-4xl md:text-6xl font-light tracking-wider mb-8"
           >
-            VIP EXPERIENCE
+            VIP PACKAGES
           </motion.h1>
         </div>
       </section>
@@ -195,9 +195,17 @@ ${formData.message}`;
               <p className="text-foreground/70 mb-4 leading-relaxed">
                 At Amor VIP, we handle every detail, so you don't have to. From luxury transport to VIP access, private chefs, and yacht charters, we craft the perfect stress-free getaway.
               </p>
-              <p className="text-foreground/70">
+              <p className="text-foreground/70 mb-6">
                 Contact us now to reserve your package or create a tailor-made itinerary designed just for you.
               </p>
+              <a
+                href="https://wa.me/34600250154?text=Hi%2C%20I%20am%20interested%20in%20a%20bespoke%20VIP%20package"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-lime text-primary-foreground font-medium tracking-wider uppercase text-sm rounded-lg hover:scale-105 transition-all duration-300"
+              >
+                Bespoke Packages Available on Request
+              </a>
             </motion.div>
           </motion.div>
         </div>

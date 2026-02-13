@@ -91,7 +91,7 @@ export default function FAQ() {
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-100px" });
 
   return (
-    <section id="faq" className="py-24 md:py-32 bg-charcoal-light">
+    <section id="faq" className="py-12 md:py-16 bg-charcoal-light">
       <div className="container mx-auto px-6">
         <div ref={headerRef} className="text-center mb-16">
           <motion.span

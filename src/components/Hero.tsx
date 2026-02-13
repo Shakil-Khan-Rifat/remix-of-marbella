@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
 import heroImage from "@/assets/hero-marbella-puerto-banus.jpeg";
 import BookingButtons from "./BookingButtons";
 
@@ -16,7 +15,8 @@ export default function Hero() {
           alt="Marbella harbor at sunset"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-overlay" />
+        {/* Enhanced dark overlay for better text visibility */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/90" />
       </div>
 
       {/* Content */}
@@ -25,7 +25,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="text-primary tracking-[0.4em] uppercase text-sm mb-6"
+          className="text-primary tracking-[0.4em] uppercase text-sm mb-6 drop-shadow-lg"
         >
           Marbella, Spain
         </motion.p>
@@ -34,20 +34,20 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="font-display text-5xl md:text-7xl lg:text-8xl font-medium text-foreground mb-6 leading-normal"
+          className="font-display text-5xl md:text-7xl lg:text-8xl font-medium text-foreground mb-6 leading-normal drop-shadow-xl"
         >
-          Your Personal
-          <span className="block text-gradient-lime pb-4">VIP Concierge</span>
+          Live The
+          <span className="block text-gradient-lime pb-4">Marbella Lifestyle</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.8 }}
-          className="text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto mb-10 font-light leading-relaxed"
+          className="text-lg md:text-xl text-foreground max-w-2xl mx-auto mb-10 font-light leading-relaxed drop-shadow-lg"
         >
-          Experience the pinnacle of luxury with our bespoke concierge services. 
-          From private yacht charters to exclusive villa rentals, we craft unforgettable moments in the heart of the Mediterranean.
+          Yacht parties, exclusive villas, VIP nightlife, and sun-soaked beach clubs. 
+          Your ultimate Mediterranean escape starts here.
         </motion.p>
 
         <motion.div

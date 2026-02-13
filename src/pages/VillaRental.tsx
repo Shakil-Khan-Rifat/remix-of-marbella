@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
 import HeroCarousel from "@/components/HeroCarousel";
+import TestimonialsSlider from "@/components/TestimonialsSlider";
 
 import villa1 from "@/assets/villa-1.jpg";
 import villa2 from "@/assets/villa-2.jpg";
@@ -29,7 +30,15 @@ import villaImagine8 from "@/assets/villa-imagine-8.jpg";
 import villaNuevaAndalucia from "@/assets/villa-nueva-andalucia.png";
 import villaMarbellamar from "@/assets/villa-marbellamar.png";
 import villaCollectionGoldenMile from "@/assets/villa-collection-golden-mile.png";
-import villaCasaLux from "@/assets/villa-casa-lux.png";
+import villaLaRosa1 from "@/assets/villa-la-rosa-1.jpg";
+import villaLaRosa2 from "@/assets/villa-la-rosa-2.jpg";
+import villaLaRosa3 from "@/assets/villa-la-rosa-3.jpg";
+import villaLaRosa4 from "@/assets/villa-la-rosa-4.jpg";
+import villaLaRosa5 from "@/assets/villa-la-rosa-5.jpg";
+import villaLaRosa6 from "@/assets/villa-la-rosa-6.jpg";
+import villaLaRosa7 from "@/assets/villa-la-rosa-7.jpg";
+import villaLaRosa8 from "@/assets/villa-la-rosa-8.jpg";
+
 
 import villaBenvano1 from "@/assets/villa-benvano-new-1.jpg";
 import villaBenvano2 from "@/assets/villa-benvano-new-2.jpg";
@@ -131,15 +140,6 @@ const villas: Villa[] = [
     images: [villaImagine1, villaImagine2, villaImagine3, villaImagine4, villaImagine5, villaImagine6, villaImagine7, villaImagine8],
   },
   {
-    name: "Casa Lux Villa",
-    slug: "casa-lux",
-    description: "A contemporary luxury villa set within the prestigious, gated community of Los Flamingos, offering panoramic views across the golf course, Andalusian hills, and the Mediterranean Sea. Designed for privacy, space, and elevated comfort, Villa Lux delivers a seamless balance of tranquillity and access.",
-    beds: 6,
-    baths: 6,
-    guests: 12,
-    images: [villaCasaLux],
-  },
-  {
     name: "Villa Benvano",
     slug: "villa-benvano",
     description: "A refined three-level luxury villa set within the prestigious Los Flamingos community, offering panoramic golf and Mediterranean sea views in a serene, private setting. Designed for elevated living, Villa Benvano combines architectural elegance with exceptional comfort. The villa features four en-suite bedrooms, accessed across three floors via a private elevator. Light-filled living and dining spaces open onto expansive terraces with a heated infinity pool, covered lounge, and outdoor dining—ideal for relaxed entertaining. A rooftop terrace delivers sweeping views across the golf course and coastline. For leisure and wellness, guests enjoy a private cinema room, Technogym fitness area, billiards room, and a SONOS multi-room audio system throughout. A two-car garage and shaded porch ensure seamless arrivals and departures. An elegant retreat for discreet luxury stays close to Marbella's golf, beaches, and fine dining.",
@@ -210,6 +210,15 @@ const villas: Villa[] = [
     baths: 4,
     guests: 8,
     images: [villaTropic1, villaTropic2, villaTropic3, villaTropic4, villaTropic5, villaTropic6, villaTropic7, villaTropic8, villaTropic9, villaTropic10],
+  },
+  {
+    name: "Villa La Rosa",
+    slug: "villa-la-rosa",
+    description: "Enjoy relaxed luxury in this beautiful Spanish-style villa, perfect for families and groups. Lounge by the pool, unwind in the jacuzzi, or cook in the fully equipped outdoor kitchen while taking in stunning views of La Concha mountain. Local bars and restaurants are just a short walk away.\n\nThe villa features five spacious en-suite bedrooms sleeping up to 12 guests, including a family room and a luxurious master suite with walk-in wardrobe, bath, and mountain views. Inside, you'll find a stylish lounge with IPTV, dining area, and fully equipped kitchen.\n\nOutside, enjoy the large saltwater pool surrounded by palm trees, sunset drinks on the terrace, and evening ambience in the beautifully lit gardens — ideal for unforgettable stays in Marbella.",
+    beds: 5,
+    baths: 5,
+    guests: 12,
+    images: [villaLaRosa1, villaLaRosa2, villaLaRosa3, villaLaRosa4, villaLaRosa5, villaLaRosa6, villaLaRosa7, villaLaRosa8],
   },
 ];
 
@@ -398,6 +407,8 @@ export default function VillaRental() {
           </motion.div>
         </div>
       </section>
+
+      <TestimonialsSlider />
 
       <Footer />
     </div>

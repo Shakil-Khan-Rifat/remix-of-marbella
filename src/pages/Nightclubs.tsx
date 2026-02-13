@@ -6,6 +6,7 @@ import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
+import TestimonialsSlider from "@/components/TestimonialsSlider";
 import HeroCarousel from "@/components/HeroCarousel";
 import heroImg from "@/assets/service-nightclub.png";
 import fitzImg from "@/assets/fitz-hero.jpg";
@@ -35,32 +36,11 @@ const nightclubs = [
     link: "/nightclubs/fitz",
   },
   {
-    name: "Olivia Valere",
-    description: "Legendary Marbella venue with glamorous atmosphere and international DJs",
-    image: oliviaImg,
-    features: ["Legendary Venue", "International DJs", "Champagne Service"],
-    link: "/nightclubs/olivia-valere",
-  },
-  {
     name: "Pangea",
     description: "Exclusive club experience with Mediterranean rooftop and intimate ambiance",
     image: pangeaImg,
     features: ["Rooftop Access", "Exclusive Entry", "Premium Cocktails"],
     link: "/nightclubs/pangea",
-  },
-  {
-    name: "Mirage",
-    description: "Cutting-edge nightlife destination with immersive visual experiences",
-    image: mirageImg,
-    features: ["Visual Shows", "VIP Lounges", "Late Night"],
-    link: "/nightclubs/mirage",
-  },
-  {
-    name: "TIBU",
-    description: "Iconic Puerto Banús venue known for celebrity sightings and electric atmosphere",
-    image: tibuImg,
-    features: ["Puerto Banús", "Celebrity Hotspot", "Dance Floor"],
-    link: "/nightclubs/tibu",
   },
   {
     name: "Momento",
@@ -70,11 +50,32 @@ const nightclubs = [
     link: "/nightclubs/momento",
   },
   {
+    name: "Mirage",
+    description: "Cutting-edge nightlife destination with immersive visual experiences",
+    image: mirageImg,
+    features: ["Visual Shows", "VIP Lounges", "Late Night"],
+    link: "/nightclubs/mirage",
+  },
+  {
     name: "News Café",
     description: "High-energy social hotspot where Puerto Banús comes to life from day into night",
     image: newscafeImg,
     features: ["Puerto Banús", "Premium Service", "Day to Night"],
     link: "/nightclubs/news-cafe",
+  },
+  {
+    name: "TIBU",
+    description: "Iconic Puerto Banús venue known for celebrity sightings and electric atmosphere",
+    image: tibuImg,
+    features: ["Puerto Banús", "Celebrity Hotspot", "Dance Floor"],
+    link: "/nightclubs/tibu",
+  },
+  {
+    name: "Olivia Valere",
+    description: "Legendary Marbella venue with glamorous atmosphere and international DJs",
+    image: oliviaImg,
+    features: ["Legendary Venue", "International DJs", "Champagne Service"],
+    link: "/nightclubs/olivia-valere",
   },
 ];
 
@@ -233,6 +234,8 @@ export default function Nightclubs() {
           </motion.div>
         </div>
       </section>
+
+      <TestimonialsSlider />
 
       <Footer />
     </main>

@@ -41,22 +41,6 @@ const features = [
   { icon: "🍾", title: "VIP Tables & Premium Service", description: "Stylish bottle service and high-end crowd for celebrations and elevated nights" },
 ];
 
-const tableOptions = [
-  { category: "Outdoor Terrace Tables", items: [
-    { name: "Yellow", price: "Contact for pricing" },
-    { name: "Green", price: "Contact for pricing" },
-    { name: "Orange", price: "Contact for pricing" },
-    { name: "Cyan", price: "Contact for pricing" },
-    { name: "Magenta", price: "Contact for pricing" },
-    { name: "Red", price: "Contact for pricing" },
-    { name: "Purple", price: "Contact for pricing" },
-    { name: "Bronze", price: "Contact for pricing" },
-    { name: "Gold", price: "Contact for pricing" },
-  ]},
-  { category: "Indoor Tables", items: [
-    { name: "Dark Green", price: "Contact for pricing" },
-  ]},
-];
 
 export default function PangeaPage() {
   return (
@@ -148,50 +132,6 @@ export default function PangeaPage() {
         </div>
       </section>
 
-      {/* Table Options */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-              VIP Table <span className="text-gradient-lime">Options</span>
-            </h2>
-            <p className="text-foreground/60 max-w-2xl mx-auto">
-              Choose from our range of exclusive table options across the outdoor terrace and indoor areas.
-            </p>
-          </motion.div>
-
-          <div className="max-w-4xl mx-auto space-y-8">
-            {tableOptions.map((section, sectionIndex) => (
-              <motion.div 
-                key={section.category}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: sectionIndex * 0.1 }}
-                className="bg-charcoal-light rounded-2xl border border-primary/10 overflow-hidden"
-              >
-                <div className="p-4 bg-background/30 border-b border-primary/10">
-                  <h3 className="font-display text-xl text-foreground">{section.category}</h3>
-                </div>
-                <div className="p-4">
-                  <div className="flex flex-wrap gap-3">
-                    {section.items.map((item, index) => (
-                      <span 
-                        key={index}
-                        className="px-4 py-2 bg-background/50 text-foreground/80 rounded-full border border-primary/20 hover:border-primary/40 transition-colors duration-300 text-sm"
-                      >
-                        {item.name}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Floor Plan Section */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-6">
           <motion.div 

@@ -1,7 +1,8 @@
 import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, ChevronLeft, ChevronRight, MessageCircle, Mail, Send } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight, MessageCircle } from "lucide-react";
+import BookingButtons from "@/components/BookingButtons";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useToast } from "@/hooks/use-toast";
@@ -90,6 +91,14 @@ import villaTropic7 from "@/assets/villa-tropic-7.png";
 import villaTropic8 from "@/assets/villa-tropic-8.png";
 import villaTropic9 from "@/assets/villa-tropic-9.png";
 import villaTropic10 from "@/assets/villa-tropic-10.png";
+import villaLaRosa1 from "@/assets/villa-la-rosa-1.jpg";
+import villaLaRosa2 from "@/assets/villa-la-rosa-2.jpg";
+import villaLaRosa3 from "@/assets/villa-la-rosa-3.jpg";
+import villaLaRosa4 from "@/assets/villa-la-rosa-4.jpg";
+import villaLaRosa5 from "@/assets/villa-la-rosa-5.jpg";
+import villaLaRosa6 from "@/assets/villa-la-rosa-6.jpg";
+import villaLaRosa7 from "@/assets/villa-la-rosa-7.jpg";
+import villaLaRosa8 from "@/assets/villa-la-rosa-8.jpg";
 
 const WHATSAPP_URL = "https://wa.me/34600250154?text=Hi%2C%20I%20would%20like%20to%20make%20a%20booking";
 const EMAIL = "Amorvipconcierge@gmail.com";
@@ -248,42 +257,37 @@ const villasData: Record<string, { name: string; description: string; images: st
       villaTropic10,
     ],
   },
+  "villa-la-rosa": {
+    name: "Villa La Rosa",
+    description: "Marbella\n\n5 Bedrooms · Sleeps up to 12\n\nEnjoy relaxed luxury in this beautiful Spanish-style villa, perfect for families and groups. Lounge by the pool, unwind in the jacuzzi, or cook in the fully equipped outdoor kitchen while taking in stunning views of La Concha mountain. Local bars and restaurants are just a short walk away.\n\nThe villa features five spacious en-suite bedrooms sleeping up to 12 guests, including a family room and a luxurious master suite with walk-in wardrobe, bath, and mountain views. Inside, you'll find a stylish lounge with IPTV, dining area, and fully equipped kitchen.\n\nOutside, enjoy the large saltwater pool surrounded by palm trees, sunset drinks on the terrace, and evening ambience in the beautifully lit gardens — ideal for unforgettable stays in Marbella.",
+    images: [
+      villaLaRosa1,
+      villaLaRosa2,
+      villaLaRosa3,
+      villaLaRosa4,
+      villaLaRosa5,
+      villaLaRosa6,
+      villaLaRosa7,
+      villaLaRosa8,
+    ],
+  },
 };
 
 function VillaContactForm({ villaName }: { villaName: string }) {
-  const { toast } = useToast();
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
     phone: "",
-    date: "",
+    checkIn: "",
+    checkOut: "",
     message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const recipientEmail = "Amorvipconcierge@gmail.com";
-    const subject = `Villa Inquiry: ${villaName} - ${formData.firstName} ${formData.lastName}`;
-    const body = `Name: ${formData.firstName} ${formData.lastName}
-Email: ${formData.email}
-Phone: ${formData.phone || "Not provided"}
-Preferred Date: ${formData.date || "Not specified"}
-Villa: ${villaName}
-
-Message:
-${formData.message}`;
-
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(recipientEmail)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const text = `Hi, I'd like to enquire about ${villaName}.%0A%0APhone: ${encodeURIComponent(formData.phone)}%0ACheck-in: ${encodeURIComponent(formData.checkIn || "Not specified")}%0ACheck-out: ${encodeURIComponent(formData.checkOut || "Not specified")}%0A%0A${encodeURIComponent(formData.message)}`;
     
-    window.open(gmailUrl, "_blank");
-    
-    toast({
-      title: "Opening Email",
-      description: "Complete sending your message in the new tab.",
-    });
-    setFormData({ firstName: "", lastName: "", email: "", phone: "", date: "", message: "" });
+    window.open(`https://wa.me/34600250154?text=${text}`, "_blank");
+    setFormData({ phone: "", checkIn: "", checkOut: "", message: "" });
   };
 
   return (
@@ -299,65 +303,42 @@ ${formData.message}`;
           <h2 className="font-display text-2xl md:text-3xl mb-2 text-foreground text-center">
             Enquire About This <span className="text-gradient-lime">Villa</span>
           </h2>
-          <p className="text-foreground/60 text-center mb-8">
+          <p className="text-foreground/60 text-center mb-2">
             Fill out the form below and we'll get back to you shortly
+          </p>
+          <p className="text-primary/80 text-center text-sm mb-8 italic">
+            We work directly on behalf of our clients ensuring a seamless, hassle-free Marbella experience.
           </p>
           
           <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-8">
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
-              <div>
-                <label className="block text-sm text-foreground/60 mb-2">First Name</label>
-                <input
-                  type="text"
-                  required
-                  value={formData.firstName}
-                  onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                  className="w-full bg-muted border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary transition-colors"
-                  placeholder="John"
-                />
-              </div>
-              <div>
-                <label className="block text-sm text-foreground/60 mb-2">Last Name</label>
-                <input
-                  type="text"
-                  required
-                  value={formData.lastName}
-                  onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                  className="w-full bg-muted border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary transition-colors"
-                  placeholder="Doe"
-                />
-              </div>
-            </div>
-
             <div className="mb-6">
-              <label className="block text-sm text-foreground/60 mb-2">Email</label>
+              <label className="block text-sm text-foreground/60 mb-2">Phone Number</label>
               <input
-                type="email"
+                type="tel"
                 required
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 className="w-full bg-muted border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary transition-colors"
-                placeholder="john@example.com"
+                placeholder="Write here..."
               />
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div>
-                <label className="block text-sm text-foreground/60 mb-2">Phone</label>
+                <label className="block text-sm text-foreground/60 mb-2">Check-in Date</label>
                 <input
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  type="date"
+                  value={formData.checkIn}
+                  onChange={(e) => setFormData({ ...formData, checkIn: e.target.value })}
                   className="w-full bg-muted border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary transition-colors"
-                  placeholder="+34 XXX XXX XXX"
                 />
               </div>
               <div>
-                <label className="block text-sm text-foreground/60 mb-2">Preferred Date</label>
+                <label className="block text-sm text-foreground/60 mb-2">Check-out Date</label>
                 <input
                   type="date"
-                  value={formData.date}
-                  onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                  value={formData.checkOut}
+                  onChange={(e) => setFormData({ ...formData, checkOut: e.target.value })}
                   className="w-full bg-muted border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary transition-colors"
                 />
               </div>
@@ -373,7 +354,7 @@ ${formData.message}`;
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 className="w-full bg-muted border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary transition-colors resize-none"
-                placeholder="Number of guests, special requirements, questions about the property..."
+                placeholder="Write here..."
               />
             </div>
 
@@ -381,10 +362,15 @@ ${formData.message}`;
               type="submit"
               className="w-full py-4 bg-gradient-lime text-primary-foreground font-medium tracking-wider uppercase flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform rounded-lg"
             >
-              Send Enquiry
-              <Send className="w-4 h-4" />
+              <MessageCircle className="w-4 h-4" />
+              Send Enquiry via WhatsApp
             </button>
           </form>
+
+          {/* Disclaimer */}
+          <p className="text-foreground/40 text-xs text-center mt-6 max-w-lg mx-auto leading-relaxed">
+            Disclaimer: Amor VIP Concierge acts as a third-party intermediary and is not the direct owner or operator of the properties listed. All bookings are subject to availability and the terms and conditions of the property owner. We are not liable for any issues arising directly from the property or its management.
+          </p>
         </motion.div>
       </div>
     </section>
@@ -473,11 +459,10 @@ export default function VillaDetailPage() {
         </div>
       </section>
 
-      {/* Image Gallery Section - 3 Images Visible */}
+      {/* Image Gallery Section */}
       <section className="pb-12">
         <div className="container mx-auto px-6">
           <div className="relative">
-            {/* Navigation Arrows */}
             <button
               onClick={() => scroll("left")}
               disabled={!canScrollLeft}
@@ -497,7 +482,6 @@ export default function VillaDetailPage() {
               <ChevronRight className="w-6 h-6 text-foreground" />
             </button>
 
-            {/* 3-Image Gallery Layout */}
             <div
               ref={scrollContainerRef}
               className="flex gap-3 overflow-x-auto scrollbar-hide snap-x snap-mandatory"
@@ -552,34 +536,23 @@ export default function VillaDetailPage() {
       {/* Contact Form Section */}
       <VillaContactForm villaName={villa.name} />
 
-      {/* Booking Buttons Section */}
-      <section className="py-16 border-t border-primary/10">
-        <div className="container mx-auto px-6">
+      {/* CTA Section - Matching Yacht Style */}
+      <section className="py-16 md:py-24 bg-charcoal-light">
+        <div className="container mx-auto px-6 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-lime text-primary-foreground font-medium tracking-wider uppercase text-sm rounded-lg hover:scale-105 transition-all duration-300"
-            >
-              <MessageCircle className="w-5 h-5" />
-              <span>Book with WhatsApp</span>
-            </a>
-            <a
-              href={GMAIL_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 border border-primary/30 text-foreground font-medium tracking-wider uppercase text-sm rounded-lg hover:border-primary hover:text-primary transition-all duration-300"
-            >
-              <Mail className="w-5 h-5" />
-              <span>Book with Email</span>
-            </a>
+            <h2 className="font-display text-3xl md:text-5xl mb-6">
+              Ready to <span className="text-gradient-lime">Book Your Stay</span>?
+            </h2>
+            <p className="text-foreground/60 max-w-2xl mx-auto mb-8">
+              Contact our concierge team to arrange your perfect villa experience. 
+              We'll handle every detail for a seamless, hassle-free Marbella stay.
+            </p>
+            <BookingButtons />
           </motion.div>
         </div>
       </section>
