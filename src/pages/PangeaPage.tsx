@@ -97,7 +97,7 @@ export default function PangeaPage() {
                 </div>
                 <div className="flex items-center gap-3 text-foreground/70">
                   <Music className="w-5 h-5 text-primary" />
-                  <span className="text-sm">Deep House, Afro House</span>
+                  <span className="text-sm">House, Commercial, Afro House</span>
                 </div>
                 <div className="flex items-center gap-3 text-foreground/70">
                   <Star className="w-5 h-5 text-primary" />

@@ -185,13 +185,13 @@ const villas: Villa[] = [
     images: [villaTorro1, villaTorro2, villaTorro3, villaTorro4, villaTorro5, villaTorro6, villaTorro7, villaTorro8, villaTorro9, villaTorro10],
   },
   {
-    name: "Villa Mozart",
-    slug: "villa-mozart",
-    description: "A contemporary four-level luxury villa located in the prestigious gated community of Sierra Blanca. Villa Mozart offers panoramic sea and mountain views, refined interiors, and exceptional privacy just minutes from the Golden Mile and Puerto Banús. Features a rooftop terrace with full-size swimming pool.",
-    beds: 6,
-    baths: 9,
+    name: "Villa La Rosa",
+    slug: "villa-la-rosa",
+    description: "Enjoy relaxed luxury in this beautiful Spanish-style villa, perfect for families and groups. Lounge by the pool, unwind in the jacuzzi, or cook in the fully equipped outdoor kitchen while taking in stunning views of La Concha mountain. Local bars and restaurants are just a short walk away.\n\nThe villa features five spacious en-suite bedrooms sleeping up to 12 guests, including a family room and a luxurious master suite with walk-in wardrobe, bath, and mountain views. Inside, you'll find a stylish lounge with IPTV, dining area, and fully equipped kitchen.\n\nOutside, enjoy the large saltwater pool surrounded by palm trees, sunset drinks on the terrace, and evening ambience in the beautifully lit gardens — ideal for unforgettable stays in Marbella.",
+    beds: 5,
+    baths: 5,
     guests: 12,
-    images: [villaMozart1, villaMozart2, villaMozart3, villaMozart4, villaMozart5, villaMozart6, villaMozart7, villaMozart8, villaMozart9],
+    images: [villaLaRosa1, villaLaRosa2, villaLaRosa3, villaLaRosa4, villaLaRosa5, villaLaRosa6, villaLaRosa7, villaLaRosa8],
   },
   {
     name: "Villa Pedro",
@@ -212,13 +212,13 @@ const villas: Villa[] = [
     images: [villaTropic1, villaTropic2, villaTropic3, villaTropic4, villaTropic5, villaTropic6, villaTropic7, villaTropic8, villaTropic9, villaTropic10],
   },
   {
-    name: "Villa La Rosa",
-    slug: "villa-la-rosa",
-    description: "Enjoy relaxed luxury in this beautiful Spanish-style villa, perfect for families and groups. Lounge by the pool, unwind in the jacuzzi, or cook in the fully equipped outdoor kitchen while taking in stunning views of La Concha mountain. Local bars and restaurants are just a short walk away.\n\nThe villa features five spacious en-suite bedrooms sleeping up to 12 guests, including a family room and a luxurious master suite with walk-in wardrobe, bath, and mountain views. Inside, you'll find a stylish lounge with IPTV, dining area, and fully equipped kitchen.\n\nOutside, enjoy the large saltwater pool surrounded by palm trees, sunset drinks on the terrace, and evening ambience in the beautifully lit gardens — ideal for unforgettable stays in Marbella.",
-    beds: 5,
-    baths: 5,
+    name: "Villa Mozart",
+    slug: "villa-mozart",
+    description: "A contemporary four-level luxury villa located in the prestigious gated community of Sierra Blanca. Villa Mozart offers panoramic sea and mountain views, refined interiors, and exceptional privacy just minutes from the Golden Mile and Puerto Banús. Features a rooftop terrace with full-size swimming pool.",
+    beds: 6,
+    baths: 9,
     guests: 12,
-    images: [villaLaRosa1, villaLaRosa2, villaLaRosa3, villaLaRosa4, villaLaRosa5, villaLaRosa6, villaLaRosa7, villaLaRosa8],
+    images: [villaMozart1, villaMozart2, villaMozart3, villaMozart4, villaMozart5, villaMozart6, villaMozart7, villaMozart8, villaMozart9],
   },
 ];
 
@@ -253,7 +253,7 @@ function VillaCard({ villa, index }: { villa: Villa; index: number }) {
           <Home className="w-6 h-6 text-primary/50" />
         </div>
 
-        <p className="text-foreground/60 text-sm mb-4 leading-relaxed">
+        <p className="text-foreground/60 text-sm mb-4 leading-relaxed line-clamp-3">
           {villa.description}
         </p>
 
@@ -284,6 +284,7 @@ function VillaCard({ villa, index }: { villa: Villa; index: number }) {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
             className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-gradient-lime text-primary-foreground font-medium tracking-wider uppercase text-xs rounded-lg hover:scale-105 transition-all duration-300"
           >
             <MessageCircle className="w-4 h-4" />

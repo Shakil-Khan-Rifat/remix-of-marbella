@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Plane, Home, Car, Utensils, ShoppingBag, Calendar, Clock, Shield, Star, Sparkles, MapPin, Users, Navigation, Timer } from "lucide-react";
+import { Plane, Home, Car, Utensils, ShoppingBag, Calendar, Clock, Shield, Star, Sparkles, MapPin, Users, Navigation, Timer, MessageCircle } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingButtons from "@/components/BookingButtons";
@@ -20,7 +20,7 @@ const services = [
   {
     icon: Plane,
     title: "Private Aviation",
-    description: "Private jet and helicopter charter arranged upon request. From commercial upgrades to bespoke flight itineraries — we connect you with trusted aviation partners.",
+    description: "Private jet and helicopter charter arranged upon request.",
   },
   {
     icon: Home,
@@ -39,8 +39,8 @@ const services = [
   },
   {
     icon: ShoppingBag,
-    title: "Personal Shopping & Errands",
-    description: "From designer fashion to a phone charger at midnight — no request is too big or too small. We source, deliver, and handle it all.",
+    title: "Personal Shopper",
+    description: "Personal shopping experience tailored to suit your favourite luxury fashion designers.",
   },
   {
     icon: Calendar,
@@ -57,7 +57,7 @@ const services = [
 const features = [
   {
     icon: Clock,
-    title: "24/7 Availability",
+    title: "Availability",
     description: "Round-the-clock support for any request, big or small. One message and we're on it.",
   },
   {
@@ -148,27 +148,32 @@ export default function LifestyleManagement() {
             <h2 className="font-display text-3xl md:text-4xl text-foreground mb-6">
               How It <span className="text-gradient-lime">Works</span>
             </h2>
-            <div className="grid md:grid-cols-3 gap-8 mt-12">
+            <div className="grid md:grid-cols-2 gap-8 mt-12">
               <div className="p-6 bg-charcoal-light rounded-xl border border-primary/10">
                 <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-primary font-bold text-xl">1</span>
                 </div>
                 <h3 className="font-display text-xl text-foreground mb-2">Share Your Vision</h3>
-                <p className="text-foreground/60 text-sm">Tell us your preferences, dates, group size, and what matters most to you. We listen first.</p>
+                <p className="text-foreground/60 text-sm">Tell us your preferences, dates, group size, and what matters most to you.</p>
               </div>
               <div className="p-6 bg-charcoal-light rounded-xl border border-primary/10">
                 <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-primary font-bold text-xl">2</span>
                 </div>
                 <h3 className="font-display text-xl text-foreground mb-2">We Plan Everything</h3>
-                <p className="text-foreground/60 text-sm">We coordinate logistics, secure priority access, manage bookings, and build your full itinerary.</p>
+                <p className="text-foreground/60 text-sm">We build your full itinerary and provide on the ground representation.</p>
               </div>
-              <div className="p-6 bg-charcoal-light rounded-xl border border-primary/10">
+            </div>
+            <div className="flex justify-center mt-8">
+              <div className="p-6 bg-charcoal-light rounded-xl border border-primary/10 max-w-md w-full">
                 <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-primary font-bold text-xl">3</span>
                 </div>
-                <h3 className="font-display text-xl text-foreground mb-2">Enjoy & Relax</h3>
-                <p className="text-foreground/60 text-sm">Arrive and enjoy — everything is handled. Need something on the fly? We're one message away, 24/7.</p>
+                <h3 className="font-display text-xl text-foreground mb-2">We're One Message Away</h3>
+                <p className="text-foreground/60 text-sm flex items-center justify-center gap-2">
+                  Need something? Just reach out — we're always here.
+                  <MessageCircle className="w-5 h-5 text-primary inline-block" />
+                </p>
               </div>
             </div>
           </motion.div>

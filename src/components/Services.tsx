@@ -13,10 +13,10 @@ import lifestyleImg from "@/assets/service-lifestyle-new.jpg";
 
 const services = [
   {
-    title: "Beach Clubs",
-    description: "VIP access to the most exclusive beach clubs on the Costa del Sol",
-    image: beachClubImg,
-    link: "/beach-clubs",
+    title: "Villa Rental",
+    description: "Stunning private villas with pools and panoramic sea views",
+    image: villaImg,
+    link: "/villa-rental",
   },
   {
     title: "Yacht Charter",
@@ -25,28 +25,28 @@ const services = [
     link: "/yacht-charter",
   },
   {
+    title: "Lifestyle Management",
+    description: "Complete luxury concierge—from airport pickup to every detail of your stay",
+    image: lifestyleImg,
+    link: "/lifestyle-management",
+  },
+  {
+    title: "Pool Clubs",
+    description: "VIP access to the most exclusive beach clubs on the Costa del Sol",
+    image: beachClubImg,
+    link: "/beach-clubs",
+  },
+  {
     title: "Nightlife",
     description: "Skip the lines with VIP entry to Marbella's hottest venues",
     image: nightclubImg,
     link: "/nightclubs",
   },
   {
-    title: "Villa Rental",
-    description: "Stunning private villas with pools and panoramic sea views",
-    image: villaImg,
-    link: "/villa-rental",
-  },
-  {
     title: "Car Hire",
     description: "Luxury and exotic car rentals for the ultimate driving experience",
     image: carImg,
     link: "/car-hire",
-  },
-  {
-    title: "Lifestyle Management",
-    description: "Complete luxury concierge—from airport pickup to every detail of your stay",
-    image: lifestyleImg,
-    link: "/lifestyle-management",
   },
 ];
 
@@ -147,7 +147,9 @@ export default function Services() {
           className="text-center mt-8"
         >
           <a
-            href="#contact"
+            href="https://wa.me/34600250154?text=Hi%2C%20I%20would%20like%20to%20make%20a%20booking"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block px-12 py-4 bg-gradient-lime text-primary-foreground font-medium tracking-wider uppercase text-sm hover:scale-105 transition-transform"
           >
             Book Now

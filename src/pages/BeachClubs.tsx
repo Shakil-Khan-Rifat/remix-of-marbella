@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -73,15 +73,21 @@ const beachClubs = [
 function ClubCard({ club, index }: { club: typeof beachClubs[0]; index: number }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const navigate = useNavigate();
+
+  const WHATSAPP_URL = "https://wa.me/34600250154?text=Hi%2C%20I%20would%20like%20to%20make%20a%20booking";
 
   return (
-    <Link to={club.link}>
-      <motion.div
-        ref={ref}
-        initial={{ opacity: 0, y: 60, scale: 0.95 }}
-        animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-        transition={{ duration: 0.6, delay: index * 0.1 }}
-        className="group relative bg-charcoal-light rounded-2xl overflow-hidden border border-primary/10 hover:border-primary/30 transition-all duration-500 cursor-pointer h-full"
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 60, scale: 0.95 }}
+      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className="group relative bg-charcoal-light rounded-2xl overflow-hidden border border-primary/10 hover:border-primary/30 transition-all duration-500 h-full"
+    >
+      <div
+        className="cursor-pointer"
+        onClick={() => navigate(club.link)}
       >
         <div className="aspect-[4/3] overflow-hidden">
           <img
@@ -89,10 +95,10 @@ function ClubCard({ club, index }: { club: typeof beachClubs[0]; index: number }
             alt={club.name}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60 pointer-events-none" />
         </div>
         
-        <div className="p-6">
+        <div className="p-6 pb-0">
           <h3 className="font-display text-2xl md:text-3xl text-foreground group-hover:text-primary transition-colors duration-300 mb-3">
             {club.name}
           </h3>
@@ -110,18 +116,26 @@ function ClubCard({ club, index }: { club: typeof beachClubs[0]; index: number }
               </span>
             ))}
           </div>
-
-          <span
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-lime text-primary-foreground font-medium text-sm tracking-wider uppercase rounded-lg transition-all duration-300 group-hover:scale-105"
-          >
-            View & Book
-          </span>
         </div>
+      </div>
 
-        {/* Decorative corner accent */}
-        <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-primary/30 group-hover:border-primary transition-colors duration-300" />
-      </motion.div>
-    </Link>
+      <div className="px-6 pb-6 relative z-10">
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            window.open(WHATSAPP_URL, '_blank', 'noopener,noreferrer');
+          }}
+          className="btn-book-now inline-flex items-center gap-2 px-6 py-3 bg-gradient-lime text-primary-foreground font-medium text-sm tracking-wider uppercase rounded-lg cursor-pointer"
+        >
+          Book Now
+        </button>
+      </div>
+
+      {/* Decorative corner accent */}
+      <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-primary/30 group-hover:border-primary transition-colors duration-300" />
+    </motion.div>
   );
 }
 

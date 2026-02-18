@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
-import logo from "@/assets/logo-hd.png";
+import logo from "@/assets/logo-rectangular.png";
 
 const quickLinks = [
   { label: "Services", href: "/#services" },
@@ -18,7 +18,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Brand - Left */}
           <div>
-            <img src={logo} alt="Amor VIP Concierge" className="h-14 w-14 rounded-full object-cover mb-4" />
+            <img src={logo} alt="Amor VIP Concierge" className="h-14 object-contain mb-4" />
             <p className="text-foreground/50 text-sm leading-relaxed">
               Your luxury concierge service in Marbella, Spain. 
               Creating unforgettable experiences since 2023.

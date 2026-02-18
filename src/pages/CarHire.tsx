@@ -42,29 +42,27 @@ import carLamboUrusNew from "@/assets/car-lambo-urus-new.jpg";
 import carRollsRoyce from "@/assets/car-rolls-royce.jpg";
 
 const luxuryCars = [
-  {
-    name: "Mercedes G63 AMG",
-    images: [carG63Front, carG63Rear, carG63Interior, carG63Black, carG63Steering, carG63Seat],
-  },
+  // Sports cars first
   {
     name: "Ferrari Roma",
     images: [carFerrariRomaFront, carFerrariRomaRear, carFerrariRomaInterior],
-  },
-  {
-    name: "Lamborghini Huracán Performante",
-    images: [carLamboHuracanFront, carLamboHuracanSide, carLamboHuracanRear, carLamboHuracanInterior],
   },
   {
     name: "Ferrari 296 GTB",
     images: [carFerrari296Front, carFerrari296Side, carFerrari296Rear],
   },
   {
+    name: "Lamborghini Huracán Performante",
+    images: [carLamboHuracanFront, carLamboHuracanSide, carLamboHuracanRear, carLamboHuracanInterior],
+  },
+  {
     name: "Lamborghini Huracán STO",
     images: [carLamboStoFront, carLamboStoSide, carLamboStoRear],
   },
+  // SUVs
   {
-    name: "Mercedes V Class",
-    images: [carVclassExterior, carVclassInterior, carVclassSteering],
+    name: "Mercedes G63 AMG",
+    images: [carG63Front, carG63Rear, carG63Interior, carG63Black, carG63Steering, carG63Seat],
   },
   {
     name: "Mercedes Brabus G Wagon",
@@ -77,6 +75,11 @@ const luxuryCars = [
   {
     name: "Lamborghini Urus",
     images: [carLamboUrusNew],
+  },
+  // V Class last
+  {
+    name: "Mercedes V Class",
+    images: [carVclassExterior, carVclassInterior, carVclassSteering],
   },
 ];
 

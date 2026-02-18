@@ -123,6 +123,14 @@
     box-shadow: 0 0 40px -10px hsla(68, 100%, 50%, 0.5);
   }
 
+  .btn-book-now {
+    transition: all 0.3s ease;
+  }
+  .btn-book-now:hover {
+    transform: scale(1.05);
+    filter: brightness(1.15);
+  }
+
   .glass-card {
     @apply bg-card/80 backdrop-blur-lg border border-border/50;
   }

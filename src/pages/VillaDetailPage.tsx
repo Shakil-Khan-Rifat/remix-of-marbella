@@ -1,11 +1,15 @@
 import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, ChevronLeft, ChevronRight, MessageCircle } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight, MessageCircle, CalendarIcon } from "lucide-react";
+import { format } from "date-fns";
 import BookingButtons from "@/components/BookingButtons";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useToast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 import villaImagine1 from "@/assets/villa-imagine-1.jpg";
 import villaImagine2 from "@/assets/villa-imagine-2.jpg";
@@ -275,19 +279,22 @@ const villasData: Record<string, { name: string; description: string; images: st
 
 function VillaContactForm({ villaName }: { villaName: string }) {
   const [formData, setFormData] = useState({
+    name: "",
     phone: "",
-    checkIn: "",
-    checkOut: "",
+    checkIn: undefined as Date | undefined,
+    checkOut: undefined as Date | undefined,
     message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const text = `Hi, I'd like to enquire about ${villaName}.%0A%0APhone: ${encodeURIComponent(formData.phone)}%0ACheck-in: ${encodeURIComponent(formData.checkIn || "Not specified")}%0ACheck-out: ${encodeURIComponent(formData.checkOut || "Not specified")}%0A%0A${encodeURIComponent(formData.message)}`;
+    const checkInStr = formData.checkIn ? format(formData.checkIn, "PPP") : "Not specified";
+    const checkOutStr = formData.checkOut ? format(formData.checkOut, "PPP") : "Not specified";
+    const text = `Hi, I'd like to enquire about ${villaName}.%0A%0AName: ${encodeURIComponent(formData.name)}%0APhone: ${encodeURIComponent(formData.phone)}%0ACheck-in: ${encodeURIComponent(checkInStr)}%0ACheck-out: ${encodeURIComponent(checkOutStr)}%0A%0A${encodeURIComponent(formData.message)}`;
     
     window.open(`https://wa.me/34600250154?text=${text}`, "_blank");
-    setFormData({ phone: "", checkIn: "", checkOut: "", message: "" });
+    setFormData({ name: "", phone: "", checkIn: undefined, checkOut: undefined, message: "" });
   };
 
   return (
@@ -312,35 +319,81 @@ function VillaContactForm({ villaName }: { villaName: string }) {
           
           <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-8">
             <div className="mb-6">
-              <label className="block text-sm text-foreground/60 mb-2">Phone Number</label>
+              <label className="block text-sm text-foreground/60 mb-2">Name</label>
+              <input
+                type="text"
+                required
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                className="w-full bg-muted border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary transition-colors"
+                placeholder="Write here..."
+              />
+            </div>
+
+            <div className="mb-6">
+              <label className="block text-sm text-foreground/60 mb-2">Phone Number (inc. area code e.g. +44, +34)</label>
               <input
                 type="tel"
                 required
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 className="w-full bg-muted border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary transition-colors"
-                placeholder="Write here..."
+                placeholder="+44 7123 456789"
               />
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div>
                 <label className="block text-sm text-foreground/60 mb-2">Check-in Date</label>
-                <input
-                  type="date"
-                  value={formData.checkIn}
-                  onChange={(e) => setFormData({ ...formData, checkIn: e.target.value })}
-                  className="w-full bg-muted border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary transition-colors"
-                />
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <button
+                      type="button"
+                      className={cn(
+                        "w-full bg-muted border border-border rounded-lg px-4 py-3 text-left flex items-center gap-2 focus:outline-none focus:border-primary transition-colors",
+                        !formData.checkIn && "text-foreground/40"
+                      )}
+                    >
+                      <CalendarIcon className="w-4 h-4 text-foreground/40" />
+                      {formData.checkIn ? format(formData.checkIn, "PPP") : "Select date"}
+                    </button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={formData.checkIn}
+                      onSelect={(date) => setFormData({ ...formData, checkIn: date })}
+                      initialFocus
+                      className={cn("p-3 pointer-events-auto")}
+                    />
+                  </PopoverContent>
+                </Popover>
               </div>
               <div>
                 <label className="block text-sm text-foreground/60 mb-2">Check-out Date</label>
-                <input
-                  type="date"
-                  value={formData.checkOut}
-                  onChange={(e) => setFormData({ ...formData, checkOut: e.target.value })}
-                  className="w-full bg-muted border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary transition-colors"
-                />
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <button
+                      type="button"
+                      className={cn(
+                        "w-full bg-muted border border-border rounded-lg px-4 py-3 text-left flex items-center gap-2 focus:outline-none focus:border-primary transition-colors",
+                        !formData.checkOut && "text-foreground/40"
+                      )}
+                    >
+                      <CalendarIcon className="w-4 h-4 text-foreground/40" />
+                      {formData.checkOut ? format(formData.checkOut, "PPP") : "Select date"}
+                    </button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="end">
+                    <Calendar
+                      mode="single"
+                      selected={formData.checkOut}
+                      onSelect={(date) => setFormData({ ...formData, checkOut: date })}
+                      initialFocus
+                      className={cn("p-3 pointer-events-auto")}
+                    />
+                  </PopoverContent>
+                </Popover>
               </div>
             </div>
 

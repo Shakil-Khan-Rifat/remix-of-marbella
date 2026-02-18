@@ -132,56 +132,7 @@ export default function TibuPage() {
         </div>
       </section>
 
-      {/* Venue Details */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-              Venue <span className="text-gradient-lime">Details</span>
-            </h2>
-          </motion.div>
 
-          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="p-6 bg-charcoal-light rounded-2xl border border-primary/10 text-center"
-            >
-              <h3 className="font-display text-lg text-foreground mb-4">Music</h3>
-              <div className="flex flex-wrap justify-center gap-2">
-                {venueInfo.music.map((genre) => (
-                  <span key={genre} className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                    {genre}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="p-6 bg-charcoal-light rounded-2xl border border-primary/10 text-center"
-            >
-              <h3 className="font-display text-lg text-foreground mb-4">Dress Code</h3>
-              <p className="text-foreground/60 text-sm">{venueInfo.dressCode}</p>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="p-6 bg-charcoal-light rounded-2xl border border-primary/10 text-center"
-            >
-              <h3 className="font-display text-lg text-foreground mb-4">Opening Times</h3>
-              <p className="text-foreground/60 text-sm">{venueInfo.openingTimes}</p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
       <section className="py-16 md:py-24 bg-charcoal-light">
         <div className="container mx-auto px-6">

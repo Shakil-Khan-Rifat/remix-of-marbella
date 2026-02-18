@@ -119,11 +119,15 @@ function ClubCard({ club, index }: { club: typeof nightclubs[0]; index: number }
           ))}
         </div>
 
-        <span
+        <a
+          href="https://wa.me/34600250154?text=Hi%2C%20I%20would%20like%20to%20book%20VIP%20access"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
           className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-lime text-primary-foreground font-medium text-sm tracking-wider uppercase rounded-lg transition-all duration-300 group-hover:scale-105"
         >
           Book VIP Access
-        </span>
+        </a>
       </div>
 
       {/* Decorative corner accent */}
@@ -206,6 +210,9 @@ export default function Nightclubs() {
             <p className="text-foreground/60 max-w-2xl mx-auto">
               Experience the electric nightlife of Marbella with priority entry 
               and exclusive VIP table reservations arranged by our concierge team
+            </p>
+            <p className="text-foreground/40 text-sm mt-3 italic">
+              Prices may change subject to time, season, and venue's discretion.
             </p>
           </motion.div>
 

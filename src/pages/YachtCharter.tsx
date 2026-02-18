@@ -13,7 +13,10 @@ import yachtGolden from "@/assets/yacht-golden-new.png";
 import yachtTarela from "@/assets/yacht-tarela.png";
 import yachtSundancer from "@/assets/yacht-sundancer.png";
 import yachtAiconForever from "@/assets/yacht-aicon-forever.png";
-import yachtLouisCarbon from "@/assets/yacht-louis-carbon.png";
+import yachtCarbon1 from "@/assets/yacht-carbon-1.jpg";
+import yachtCarbon2 from "@/assets/yacht-carbon-2.jpg";
+import yachtCarbon3 from "@/assets/yacht-carbon-3.jpg";
+import yachtCarbon4 from "@/assets/yacht-carbon-4.jpg";
 import yachtMrsAmber from "@/assets/yacht-mrs-amber.png";
 import yachtMahiMahi from "@/assets/yacht-mahi-mahi.png";
 import yachtMalex from "@/assets/yacht-malex.png";
@@ -63,6 +66,7 @@ const yachts = [
   },
   {
     name: "MANGUSTA 80",
+    length: "25.07m",
     capacity: "12 passengers",
     capacityHighlight: true,
     includes: ["Champagne", "Wine", "Beers", "Sandwiches", "Fruit", "Jet Ski", "Paddle Board", "Donut", "Snorkel Equipment"],
@@ -122,10 +126,11 @@ const yachts = [
     includes: ["Snacks", "Soft Drinks", "Wine", "Beers", "Sea Bob Water Sports", "Fresh Towels", "Stability Control", "Owner's Cabin with Bathroom"],
     price: "Starting From €1,000",
     minCharter: "2 hour minimum charter",
-    images: [yachtLouisCarbon],
+    images: [yachtCarbon1, yachtCarbon2, yachtCarbon3, yachtCarbon4],
   },
   {
     name: "CORAJE",
+    length: "25m",
     capacity: "11 passengers",
     includes: ["Snacks", "Wine", "Beers", "Soft Drinks", "Paddle Board x2"],
     price: "Starting From €1,000",
@@ -134,6 +139,7 @@ const yachts = [
   },
   {
     name: "AZIMUT 39",
+    length: "12m",
     capacity: "12 passengers",
     capacityHighlight: true,
     includes: ["Snacks", "Wine", "Beer", "Soft Drinks", "Paddle Board"],
@@ -319,7 +325,7 @@ function YachtCard({ yacht, index }: { yacht: typeof yachts[0]; index: number })
 
         <div className="border-t border-primary/10 pt-4 flex-grow">
           <div className="text-primary font-semibold text-xl">{yacht.price}</div>
-          <p className="text-foreground/50 text-xs mt-1">All prices include captain, fuel, docking fees, cava, beers, soft drinks and snacks</p>
+          <p className="text-foreground/50 text-xs mt-1">All prices include IVA (VAT), captain, fuel, docking fees, cava, beers, soft drinks and snacks</p>
         </div>
 
         <div className="mt-5 pt-4 border-t border-primary/10">
@@ -407,7 +413,7 @@ export default function YachtCharter() {
               Our <span className="text-gradient-lime">Fleet</span>
             </h2>
             <p className="text-foreground/60 max-w-xl mx-auto">
-              All prices include Captain, crew, fuel, and docking fees.
+              All prices include IVA (VAT), Captain, crew, fuel, and docking fees.
             </p>
           </motion.div>
 
