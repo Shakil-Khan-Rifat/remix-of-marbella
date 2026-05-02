@@ -48,6 +48,14 @@ import azimut39Gallery1 from "@/assets/yacht-azimut39-gallery-1.jpg";
 import azimut39Gallery2 from "@/assets/yacht-azimut39-gallery-2.jpg";
 import azimut39Gallery3 from "@/assets/yacht-azimut39-gallery-3.jpg";
 import azimut39Gallery4 from "@/assets/yacht-azimut39-gallery-4.jpg";
+import sunSeeker1 from "@/assets/yacht-sunseeker-gallery-1.jpg";
+import sunSeeker2 from "@/assets/yacht-sunseeker-gallery-2.jpg";
+import sunSeeker3 from "@/assets/yacht-sunseeker-gallery-3.jpg";
+import sunSeeker4 from "@/assets/yacht-sunseeker-gallery-4.jpg";
+import ferretti1 from "@/assets/ferretti-yachts-680-fly-1.jpg";
+import ferretti2 from "@/assets/ferretti-yachts-680-fly-2.jpg";
+import ferretti3 from "@/assets/ferretti-yachts-680-fly-3.jpg";
+
 
 
 
@@ -171,6 +179,25 @@ const yachts = [
     includes: ["Captain", "Fuel", "Drinks", "Fishing Equipment"],
     price: "Starting From €550",
     images: [yachtMahiMahi],
+  },
+  
+    {
+    name: "SUNSEEKER PREDATOR",
+    length: "22,00m",
+    capacity: "10 guests (4 cab) / 8 guests sleeping)",
+    includes: ["JET SKI", "PADEL", "JELLYFISH-PROOF POOL", "HYDRAULIC PLATFORM"],
+    price: "Starting From €2,500",
+    images: [sunSeeker1, sunSeeker2, sunSeeker3, sunSeeker4],
+  },
+
+  {
+    name: "FERRETTI YACHTS 680 FLY BRIDGE",
+    length: "23,00m",
+    capacity: "10 GUESTS (4 cabins / 8 guests sleeping)",
+    includes: ["UNDERWATER LIGHTS", "SUN DECK", "WI-FI", "SWIMMING PLATFORM", "SUNPADS", "AIRCONDITIONING", "WAKEBOARD", "WATER SKI", "SNORKELLING EQUIPMENT", "PADDLEBOARD", "U-TUBE", "SEABOB 1 TWO-SEATER", "JET SKI", "SCUBA DIVE", "BANANA BOAT", "VIEW CATERING MENU"],
+    price: "Starting From €2,800",
+    images: [ferretti1, ferretti2, ferretti3],
+    premium: true,
   },
 ];
 
